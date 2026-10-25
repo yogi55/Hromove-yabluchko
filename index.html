@@ -3,80 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="theme-color" content="#E9E2D8">
+<meta name="theme-color" content="#F3EFE6">
 <title>Громове яблучко</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400&family=EB+Garamond:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=PT+Serif:wght@400;700&family=PT+Serif+Caption&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="app">
-  <header class="top">
-    <div class="lang" id="lang" hidden></div>
-    <div class="topbar" id="topbar">
-      <button type="button" id="rmPrev" class="rm rm-prev" aria-label="Попередня частина">
-        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M27 7H1.5M7 1.2L1.2 7 7 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button type="button" id="countBtn" class="count" aria-haspopup="dialog">
-        <span id="count"></span>
-        <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4.2l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button type="button" id="rmNext" class="rm rm-next" aria-label="Наступна частина">
-        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M1 7h25.5M21 1.2L26.8 7 21 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+<div class="app" id="app" data-mode="read">
+  <header class="bar">
+    <span class="part" id="part"></span>
+    <div class="bar-r">
+      <div class="modes" id="modes" role="tablist">
+        <button type="button" role="tab" id="tabListen" data-mode="listen"></button>
+        <button type="button" role="tab" id="tabRead" data-mode="read"></button>
+      </div>
+      <button type="button" id="tocBtn" class="toc" aria-haspopup="dialog"></button>
     </div>
-    <h1 id="title" class="fade"></h1>
+    <div class="lang" id="lang" hidden></div>
   </header>
 
-  <div class="col">
-    <main class="stage" id="stage">
-      <figure class="art fade" id="art">
-        <img id="img" alt="" decoding="async">
-        <div class="ph" id="ph" hidden></div>
-        <div class="dock" id="dock" aria-hidden="true"></div>
-      </figure>
-      <div class="spacer" id="spacer" aria-hidden="true"></div>
-      <article class="text fade" id="text" tabindex="0"></article>
-    </main>
+  <h1 id="title" class="fade"></h1>
 
-    <section class="player" id="player">
-      <canvas id="wave" class="wave" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></canvas>
-      <div class="controls">
-        <span class="label" id="label"></span>
-        <div class="buttons">
-          <button type="button" id="prev" class="step" aria-label="Попередня частина">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button type="button" id="play" class="play" aria-label="Слухати"></button>
-          <button type="button" id="next" class="step" aria-label="Наступна частина">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <span class="time" id="time"></span>
-      </div>
-    </section>
+  <figure class="art fade" id="art">
+    <img id="img" alt="" decoding="async">
+    <div class="ph" id="ph" hidden></div>
+  </figure>
 
-    <nav class="pager" id="pagerNav" aria-label="Частини"><ol id="pager"></ol></nav>
-
-    <nav class="mnav" id="mnav" aria-label="Навігація">
-      <button type="button" id="mPrev" class="mn mn-prev">
-        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M27 7H1.5M7 1.2L1.2 7 7 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span id="mPrevTxt"></span>
-      </button>
-      <button type="button" id="mAll" class="mn mn-all" aria-haspopup="dialog">
-        <span class="mn-top"><span id="mAllCount"></span>
-          <svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.2l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="mn-sub" id="mAllTxt"></span>
-      </button>
-      <button type="button" id="mNext" class="mn mn-next">
-        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M1 7h25.5M21 1.2L26.8 7 21 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span id="mNextTxt"></span>
-      </button>
-    </nav>
+  <div class="read" id="read">
+    <div class="body fade" id="body">
+      <article class="text" id="text" tabindex="0"></article>
+      <nav class="cont" id="cont" aria-label="Навігація між частинами">
+        <button type="button" id="next" class="next"></button>
+        <button type="button" id="back" class="back"></button>
+      </nav>
+    </div>
+    <i class="rail" id="rail" aria-hidden="true"><i id="thumb"></i></i>
   </div>
+
+  <section class="player" id="player">
+    <div class="ctrl">
+      <button type="button" id="play" class="play"></button>
+      <canvas id="wave" class="wave" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></canvas>
+    </div>
+    <div class="state"><span id="state"></span><span id="time"></span></div>
+  </section>
 
   <p class="fail" id="fail" hidden></p>
   <audio id="audio" preload="metadata"></audio>
