@@ -15,11 +15,14 @@
 <div class="app">
   <header class="top">
     <div class="lang" id="lang" hidden></div>
-    <div class="topbar">
+    <div class="topbar" id="topbar">
       <button type="button" id="rmPrev" class="rm rm-prev" aria-label="Попередня частина">
         <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M27 7H1.5M7 1.2L1.2 7 7 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <span class="count" id="count"></span>
+      <button type="button" id="countBtn" class="count" aria-haspopup="dialog">
+        <span id="count"></span>
+        <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4.2l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
       <button type="button" id="rmNext" class="rm rm-next" aria-label="Наступна частина">
         <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M1 7h25.5M21 1.2L26.8 7 21 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -32,7 +35,9 @@
       <figure class="art fade" id="art">
         <img id="img" alt="" decoding="async">
         <div class="ph" id="ph" hidden></div>
+        <div class="dock" id="dock" aria-hidden="true"></div>
       </figure>
+      <div class="spacer" id="spacer" aria-hidden="true"></div>
       <article class="text fade" id="text" tabindex="0"></article>
     </main>
 

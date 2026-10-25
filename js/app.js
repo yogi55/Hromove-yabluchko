@@ -4,10 +4,10 @@
   var UI = {
     ua: { part: 'Частина', play: 'Слухати', pause: 'Пауза', noAudio: 'запису ще немає', lang: 'uk',
           prev: 'Попередня', next: 'Наступна', all: 'Усі історії', of: 'з', close: 'Закрити',
-          reading: 'Режим читання: натисни на ілюстрацію', fail: 'Не вдалося завантажити content.json. Якщо ти відкрив index.html як файл, запусти локальний сервер, наприклад: python3 -m http.server' },
+          fail: 'Не вдалося завантажити content.json. Якщо ти відкрив index.html як файл, запусти локальний сервер, наприклад: python3 -m http.server' },
     en: { part: 'Part', play: 'Listen', pause: 'Pause', noAudio: 'no recording yet', lang: 'en',
           prev: 'Previous', next: 'Next', all: 'All stories', of: 'of', close: 'Close',
-          reading: 'Reading mode: tap the illustration', fail: 'Could not load content.json.' }
+          fail: 'Could not load content.json.' }
   };
 
   var $ = function (id) { return document.getElementById(id); };
@@ -16,13 +16,16 @@
     wave: $('wave'), label: $('label'), time: $('time'),
     prev: $('prev'), play: $('play'), next: $('next'),
     pager: $('pager'), pagerNav: $('pagerNav'), lang: $('lang'), fail: $('fail'), audio: $('audio'),
-    count: $('count'), rmPrev: $('rmPrev'), rmNext: $('rmNext'),
+    count: $('count'), countBtn: $('countBtn'), topbar: $('topbar'), spacer: $('spacer'), dock: $('dock'), player: $('player'),
+    rmPrev: $('rmPrev'), rmNext: $('rmNext'),
     mPrev: $('mPrev'), mNext: $('mNext'), mAll: $('mAll'), mPrevTxt: $('mPrevTxt'), mNextTxt: $('mNextTxt'),
     mAllCount: $('mAllCount'), mAllTxt: $('mAllTxt'),
     sheet: $('sheet'), sheetBackdrop: $('sheetBackdrop'), sheetClose: $('sheetClose'), sheetTitle: $('sheetTitle'), sheetList: $('sheetList')
   };
 
-  var S = { data: null, i: 0, lang: 'ua', peaks: [], peaksToken: 0, swapTimer: null, raf: 0, seeking: false, noAudio: false, reading: false };
+  var S = { data: null, i: 0, lang: 'ua', peaks: [], peaksToken: 0, swapTimer: null, raf: 0, seeking: false, noAudio: false, keepCollapsed: false };
+  var G = { full: 0, small: 0, y0: 0, R: 1, ticking: false };
+  var DOCK_H = 54;
 
   var ICON_PLAY = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 6.5v11l9-5.5z" fill="currentColor"/></svg>';
   var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8.5 6.5h2.6v11H8.5zM12.9 6.5h2.6v11h-2.6z" fill="currentColor"/></svg>';
@@ -53,12 +56,10 @@
     var langs = (data.meta && data.meta.langs) || ['ua'];
     var saved = store('lang');
     S.lang = langs.indexOf(saved) >= 0 ? saved : langs[0];
-    S.reading = store('reading') === '1';
 
     buildPager();
     buildLang(langs);
     bindEvents();
-    applyMode();
 
     var m = /^#(\d+)$/.exec(location.hash);
     var start = m ? Math.min(Math.max(parseInt(m[1], 10), 1), total()) - 1 : 0;
@@ -121,30 +122,54 @@
     for (var j = 0; j < lb.length; j++) lb[j].setAttribute('aria-pressed', String(lb[j].getAttribute('data-lang') === S.lang));
   }
 
-  /* ---------- режим читання (телефон) ---------- */
-  function applyMode() {
-    var on = isMobile() && S.reading;
-    document.documentElement.classList.toggle('reading', on);
-    if (isMobile()) {
-      el.art.setAttribute('role', 'button');
-      el.art.setAttribute('tabindex', '0');
-      el.art.setAttribute('aria-pressed', String(S.reading));
-      el.art.setAttribute('aria-label', ui().reading);
-    } else {
-      el.art.removeAttribute('role');
-      el.art.removeAttribute('tabindex');
-      el.art.removeAttribute('aria-pressed');
-      el.art.removeAttribute('aria-label');
+  /* ---------- згортання ілюстрації при прокрутці (телефон) ---------- */
+  var root = document.documentElement;
+  function setVars(o) { for (var k in o) root.style.setProperty(k, o[k]); }
+  function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
+
+  function measure() {
+    if (!isMobile() || !S.data) {
+      ['--stick', '--small', '--full', '--ih', '--dockh', '--playerh', '--dockop', '--rmop'].forEach(function (k) { root.style.removeProperty(k); });
+      root.classList.remove('collapsed');
+      return;
     }
-    requestAnimationFrame(function () { drawWave(); updateClip(); });
+    var vh = window.innerHeight;
+    var W = el.text.clientWidth || (document.body.clientWidth - 32);
+    var ratio = (!el.img.hidden && el.img.naturalWidth) ? el.img.naturalHeight / el.img.naturalWidth : 1.5;
+    var full = Math.min(W * ratio, vh * 0.72);
+    var small = Math.min(Math.max(vh * 0.30, 150), 320, full);
+    var inset = parseFloat(getComputedStyle(el.topbar).top) || 0;
+    var stick = inset + el.topbar.offsetHeight;
+    G.full = full; G.small = small;
+    setVars({
+      '--stick': stick + 'px', '--small': small + 'px', '--full': full + 'px',
+      '--dockh': DOCK_H + 'px', '--playerh': el.player.offsetHeight + 'px'
+    });
+    // положення ілюстрації в документі без «прилипання»: верх відступу мінус висота коробки
+    var spacerTop = el.spacer.getBoundingClientRect().top + window.scrollY;
+    G.y0 = spacerTop - (small + DOCK_H) - stick;
+    G.R = Math.max(1, full - small);
+    if (S.keepCollapsed) window.scrollTo(0, G.y0 + G.R);
+    updateScroll();
   }
 
-  function toggleReading() {
-    if (!isMobile()) return;
-    S.reading = !S.reading;
-    store('reading', S.reading ? '1' : '0');
-    applyMode();
-    window.scrollTo(0, 0);
+  function updateScroll() {
+    if (!isMobile() || !S.data) return;
+    var d = clamp(window.scrollY - G.y0, 0, G.R);
+    var p = d / G.R;
+    setVars({
+      '--ih': (G.full - d) + 'px',
+      '--dockop': clamp((p - 0.5) / 0.4, 0, 1).toFixed(3),
+      '--rmop': clamp((p - 0.6) / 0.35, 0, 1).toFixed(3)
+    });
+    root.classList.toggle('collapsed', p > 0.6);
+    G.p = p;
+  }
+
+  function onScroll() {
+    if (G.ticking) return;
+    G.ticking = true;
+    requestAnimationFrame(function () { G.ticking = false; updateScroll(); });
   }
 
   /* ---------- список усіх частин ---------- */
@@ -190,7 +215,6 @@
       p.textContent = para.trim();
       el.text.appendChild(p);
     });
-    el.text.scrollTop = 0;
     el.text.setAttribute('aria-label', tr(s.title));
     updateClip();
 
@@ -217,14 +241,19 @@
     el.sheetClose.setAttribute('aria-label', u.close);
     el.rmPrev.setAttribute('aria-label', u.prev);
     el.rmNext.setAttribute('aria-label', u.next);
-    if (isMobile()) el.art.setAttribute('aria-label', u.reading);
+    el.dock.textContent = tr(s.title);
 
     var atStart = S.i === 0, atEnd = S.i === total() - 1;
     el.prev.disabled = el.mPrev.disabled = el.rmPrev.disabled = atStart;
     el.next.disabled = el.mNext.disabled = el.rmNext.disabled = atEnd;
     markPager();
     try { history.replaceState(null, '', '#' + s.id); } catch (e) {}
-    if (changed && !opts.instant && isMobile() && !S.reading) window.scrollTo(0, 0);
+    if (changed && !opts.instant && isMobile()) {
+      S.keepCollapsed = (G.p || 0) > 0.5;
+      if (!S.keepCollapsed) window.scrollTo(0, 0);
+    }
+    measure();
+    if (!s.img) S.keepCollapsed = false;
 
     loadAudio(opts && opts.play);
   }
@@ -386,11 +415,9 @@
       go(idx);
     });
 
-    el.art.addEventListener('click', toggleReading);
-    el.art.addEventListener('keydown', function (e) {
-      if (!isMobile()) return;
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleReading(); }
-    });
+    el.countBtn.addEventListener('click', openSheet);
+    el.img.addEventListener('load', function () { measure(); S.keepCollapsed = false; });
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     el.lang.addEventListener('click', function (e) {
       var b = e.target.closest('button');
@@ -402,9 +429,9 @@
     });
 
     el.text.addEventListener('scroll', updateClip);
-    window.addEventListener('resize', function () { drawWave(); updateClip(); });
-    if (mq.addEventListener) mq.addEventListener('change', applyMode);
-    else if (mq.addListener) mq.addListener(applyMode);
+    window.addEventListener('resize', function () { drawWave(); updateClip(); measure(); });
+    if (mq.addEventListener) mq.addEventListener('change', measure);
+    else if (mq.addListener) mq.addListener(measure);
     window.addEventListener('hashchange', function () {
       var m = /^#(\d+)$/.exec(location.hash);
       if (m) { var idx = parseInt(m[1], 10) - 1; if (idx !== S.i) go(idx); }

@@ -59,10 +59,13 @@ h1 {
 
 /* верхня смужка (лічильник і стрілки) потрібна лише на телефоні */
 .topbar { display: none; }
-.count { font-size: .82rem; letter-spacing: .12em; color: var(--muted); font-variant-numeric: tabular-nums; }
-.rm { width: 44px; height: 44px; place-items: center; color: var(--muted); display: none; }
+.count { display: inline-flex; align-items: center; gap: 6px; font-size: .82rem; letter-spacing: .12em; color: var(--muted); font-variant-numeric: tabular-nums; cursor: pointer; }
+.count svg { opacity: var(--dockop, 0); }
+.rm { width: 44px; height: 44px; place-items: center; color: var(--muted); display: grid; opacity: var(--rmop, 0); pointer-events: none; }
+.collapsed .rm { pointer-events: auto; }
 .rm:hover:not(:disabled) { color: var(--ink); }
-.rm:disabled { opacity: .3; cursor: default; }
+.rm:disabled { opacity: calc(var(--rmop, 0) * .35); cursor: default; }
+.dock, .spacer { display: none; }
 
 /* колонка = ілюстрація + проміжок + текст; плеєр і шкала тягнуться на всю її ширину */
 .col { display: grid; gap: clamp(14px, 2.6vh, 28px); width: fit-content; max-width: 100%; margin-inline: auto; min-width: 0; }
@@ -177,38 +180,44 @@ h1 {
 @media (prefers-reduced-motion: reduce) { .fade { transition: none; } }
 
 /* ===== телефон ===== */
+/* Сторінка гортається звичайно. Шапка і ілюстрація «липнуть» угорі, ілюстрація зменшується разом із прокруткою (змінні задає app.js),
+   заголовок проявляється під нею, плеєр липне до низу, текст виїжджає між ними. */
 @media (max-width: 720px) {
-  body { padding-block: 16px 24px; }
-  .app { gap: 18px; }
+  body { padding-block: 0 24px; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--paper); z-index: 10; }
+  .app { gap: 0; }
   .top, .col, .stage { display: contents; }
 
-  /* порядок: лічильник, заголовок, ілюстрація, плеєр, текст, низ */
-  .lang { position: static; order: 0; align-self: flex-end; }
-  .topbar { order: 1; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; }
-  .count { grid-column: 2; text-align: center; }
+  .lang { position: static; align-self: flex-end; padding-top: 10px; }
+  .topbar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6;
+    display: grid; grid-template-columns: 44px 1fr 44px; align-items: center;
+    background: var(--paper); padding-block: 8px;
+  }
+  .count { grid-column: 2; justify-self: center; min-height: 44px; }
   .rm-prev { grid-column: 1; justify-self: start; }
   .rm-next { grid-column: 3; justify-self: end; }
-  h1 { order: 2; font-size: clamp(1.6rem, 7.4vw, 2.1rem); }
-  .art { order: 3; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .art img { width: 100%; height: auto; }
-  .ph { width: 100%; height: auto; }
+  h1 { font-size: clamp(1.6rem, 7.4vw, 2.1rem); padding: 6px 0 20px; }
 
-  .player {
-    order: 4;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 14px; row-gap: 8px; align-items: center;
-    padding-bottom: 20px; border-bottom: 1px solid var(--rule);
+  .art {
+    position: sticky; top: var(--stick, 62px); z-index: 5;
+    height: calc(var(--small, 200px) + var(--dockh, 54px));
+    background: var(--paper); cursor: default;
   }
-  .controls, .buttons { display: contents; }
-  .play { grid-column: 1; grid-row: 1; width: 52px; height: 52px; }
-  .wave { grid-column: 2; grid-row: 1; height: 44px; }
-  .label { grid-column: 2; grid-row: 2; }
-  .step, .time { display: none; }
+  .art img, .art .ph { display: block; height: var(--ih, 60svh); width: auto; max-width: 100%; margin-inline: auto; }
+  .art .ph { display: grid; place-items: center; aspect-ratio: 2 / 3; }
+  .dock {
+    display: block; position: absolute; left: 0; right: 0; top: calc(var(--ih, 60svh) + 12px);
+    text-align: center; text-transform: uppercase; font-family: var(--f-title); font-weight: 400;
+    font-size: clamp(1.3rem, 6vw, 1.7rem); letter-spacing: .03em; line-height: 1.1;
+    opacity: var(--dockop, 0); pointer-events: none;
+  }
+  .spacer { display: block; height: calc(var(--full, 560px) - var(--small, 200px)); }
 
   .text {
-    order: 5;
-    width: 100%; max-height: none; overflow: visible;
-    font-size: 1.2rem; line-height: 1.7; padding-right: 0;
+    width: 100%; max-height: none; overflow: visible; padding: 4px 0 24px;
+    min-height: calc(100svh - var(--stick, 62px) - var(--small, 200px) - var(--dockh, 54px) - var(--playerh, 90px));
+    font-size: 1.2rem; line-height: 1.7;
   }
   .text p { margin: 0 0 1em; }
   .text.is-clipped { -webkit-mask-image: none; mask-image: none; }
@@ -218,10 +227,22 @@ h1 {
     float: none; font-size: inherit; line-height: inherit; font-weight: inherit; margin: 0;
   }
 
+  .player {
+    position: sticky; bottom: env(safe-area-inset-bottom, 0px); z-index: 5;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 14px; row-gap: 8px; align-items: center;
+    background: var(--paper); border-top: 1px solid var(--rule); padding: 14px 0 12px;
+  }
+  .controls, .buttons { display: contents; }
+  .play { grid-column: 1; grid-row: 1; width: 52px; height: 52px; }
+  .wave { grid-column: 2; grid-row: 1; height: 44px; }
+  .label { grid-column: 2; grid-row: 2; }
+  .step, .time { display: none; }
+
   .pager { display: none; }
   .mnav {
-    order: 6; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 12px;
-    border-top: 1px solid var(--rule); padding-top: 16px;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 12px;
+    border-top: 1px solid var(--rule); padding-top: 16px; margin-top: 8px;
   }
   .mn { display: flex; flex-direction: column; gap: 7px; font-size: .78rem; min-height: 44px; justify-content: flex-end; }
   .mn-prev { align-items: flex-start; }
@@ -230,22 +251,4 @@ h1 {
   .mn:disabled { opacity: .35; cursor: default; }
   .mn-top { display: flex; align-items: center; gap: 5px; font-size: .95rem; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
   .mn-sub { font-size: .72rem; color: var(--muted); }
-
-  /* режим читання: мала ілюстрація, текст із прокруткою, плеєр закріплений унизу */
-  html.reading, html.reading body { height: 100%; overflow: hidden; }
-  .reading .app { height: 100%; gap: 12px; }
-  .reading .rm { display: grid; }
-  .reading .art { order: 2; align-self: center; }
-  .reading .art img { width: auto; height: clamp(150px, 30svh, 320px); }
-  .reading .ph { width: auto; height: clamp(150px, 30svh, 320px); aspect-ratio: 2 / 3; }
-  .reading h1 { order: 3; font-size: clamp(1.4rem, 6.4vw, 1.8rem); }
-  .reading .text {
-    order: 4; flex: 1 1 0; min-height: 0; overflow-y: auto;
-    scrollbar-width: thin; scrollbar-color: var(--wave) transparent;
-    padding-right: 14px;
-  }
-  .reading .text.is-clipped { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent); }
-  .reading .player { order: 5; flex: none; border-bottom: 0; border-top: 1px solid var(--rule); padding: 14px 0 0; }
-  .reading .play { width: 48px; height: 48px; }
-  .reading .mnav { display: none; }
 }
