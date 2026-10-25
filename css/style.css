@@ -1,0 +1,156 @@
+/* Один спокійний вигляд: кремовий папір, чорнильний текст. Ілюстрація керує розміром, усе інше підлаштовується під неї. */
+:root {
+  --paper: #E9E2D8;
+  --ink: #1a1816;
+  --muted: #645c52;
+  --wave: #9b9286;
+  --rule: #c9c0b2;
+  --plate: #1d1b19;
+  --focus: #8a3b1f;
+
+  --f-title: "Old Standard TT", "PT Serif", Georgia, serif;
+  --f-text: "EB Garamond", Georgia, "Times New Roman", serif;
+
+  /* висота ілюстрації: майже весь екран за вирахуванням заголовка, плеєра і шкали */
+  --img-h: clamp(380px, calc(100svh - 320px), 860px);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-text);
+  font-weight: 500;
+  -webkit-text-size-adjust: 100%;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: clamp(14px, 3vh, 36px) clamp(18px, 4vh, 48px);
+}
+
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.app { display: flex; flex-direction: column; gap: clamp(14px, 2.6vh, 30px); min-width: 0; }
+
+/* заголовок */
+.top { position: relative; }
+h1 {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--f-title);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 1.4rem + 1.6vw, 2.7rem);
+  letter-spacing: .03em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.lang { position: absolute; top: 0; right: 0; display: flex; gap: 2px; }
+.lang button {
+  font-size: .78rem; letter-spacing: .12em; padding: 4px 8px; color: var(--muted);
+  border-bottom: 1px solid transparent;
+}
+.lang button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* колонка = ілюстрація + проміжок + текст; плеєр і шкала тягнуться на всю її ширину */
+.col { display: grid; gap: clamp(14px, 2.6vh, 28px); width: fit-content; max-width: 100%; margin-inline: auto; min-width: 0; }
+
+.stage { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(28px, 4.5vw, 64px); align-items: center; min-width: 0; }
+.art { margin: 0; min-width: 0; }
+.art img { display: block; height: var(--img-h); width: auto; max-width: 100%; }
+.ph {
+  height: var(--img-h); aspect-ratio: 2 / 3; max-width: 100%;
+  background: var(--plate); color: #8b8378;
+  display: grid; place-items: center;
+  font-family: var(--f-title); font-size: 3rem; letter-spacing: .06em;
+  box-shadow: inset 0 0 0 7px var(--plate), inset 0 0 0 8px #4b463f;
+}
+
+/* Текст росте разом з ілюстрацією (близько 3,4% її висоти), колонка вузька: приблизно 18 символів кегля */
+.text {
+  font-size: clamp(1.05rem, calc(var(--img-h) * .034), 1.5rem);
+  width: 18em;
+  max-width: 100%;
+  max-height: var(--img-h);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+  line-height: 1.42;
+  text-align: left;
+  text-wrap: pretty;
+  hyphens: manual;
+  padding-right: 6px;
+}
+.text p { margin: 0 0 .9em; }
+/* Буквиця рівно на три рядки: верх великої літери на рівні верху першого рядка, низ на базовій лінії третього. */
+.text p:first-child::first-letter {
+  font-weight: 700;
+  -webkit-initial-letter: 3;
+  initial-letter: 3;
+  margin: 0 .28em 0 0;
+}
+/* Firefox поки не вміє initial-letter: тут наближений розрахунок для line-height 1.42 */
+@supports not ((initial-letter: 3) or (-webkit-initial-letter: 3)) {
+  .text p:first-child::first-letter {
+    float: left; font-size: 5.37em; line-height: .793; margin: -.02em .07em 0 0;
+  }
+}
+.text.is-clipped { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 44px), transparent); }
+
+/* плеєр */
+.player { display: grid; gap: 10px; min-width: 0; }
+.wave { display: block; width: 100%; height: 46px; cursor: pointer; touch-action: pan-y; }
+.controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
+.label, .time { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+.time { text-align: right; }
+.buttons { display: flex; align-items: center; gap: clamp(10px, 3vw, 22px); }
+.step { width: 40px; height: 40px; display: grid; place-items: center; color: var(--muted); }
+.step:hover:not(:disabled) { color: var(--ink); }
+.step:disabled { opacity: .3; cursor: default; }
+.play {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1.5px solid var(--ink); display: grid; place-items: center;
+}
+.play:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.play:disabled { opacity: .35; cursor: default; }
+.play svg { display: block; }
+
+/* шкала частин */
+.pager { overflow-x: auto; scrollbar-width: none; border-top: 1px solid var(--rule); padding-top: 14px; }
+.pager::-webkit-scrollbar { display: none; }
+.pager ol { list-style: none; margin: 0; padding: 0; display: flex; justify-content: space-between; align-items: center; min-width: max-content; }
+.pager li { display: flex; align-items: center; }
+.pager li + li::before { content: ""; width: 7px; height: 1px; background: var(--rule); margin: 0 5px; }
+.pager button {
+  font-size: .8rem; letter-spacing: .03em; color: var(--muted);
+  padding: 8px 2px; font-variant-numeric: tabular-nums;
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px;
+}
+.pager button:hover { color: var(--ink); }
+.pager button[aria-current="true"] { color: var(--ink); text-decoration-color: var(--ink); }
+
+.fail { text-align: center; color: var(--muted); max-width: 52ch; margin: 24px auto; }
+
+/* плавна зміна слайда */
+.fade { transition: opacity .18s ease; }
+.swap .fade { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .fade { transition: none; } }
+
+/* телефон: ілюстрація на всю ширину, текст під нею */
+@media (max-width: 720px) {
+  .col { width: 100%; }
+  .stage { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .art img { width: 100%; height: auto; }
+  .ph { width: 100%; height: auto; }
+  .text { width: 100%; max-height: none; overflow: visible; font-size: 1.14rem; padding-right: 0; }
+  .text.is-clipped { -webkit-mask-image: none; mask-image: none; }
+  .controls { grid-template-columns: 1fr auto; row-gap: 6px; }
+  .buttons { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .label { grid-row: 2; }
+  .time { grid-row: 2; }
+  .lang { position: static; justify-content: flex-end; margin-bottom: 6px; }
+}

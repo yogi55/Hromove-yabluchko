@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#E9E2D8">
+<title>Громове яблучко</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400&family=EB+Garamond:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="lang" id="lang" hidden></div>
+    <h1 id="title" class="fade"></h1>
+  </header>
+
+  <div class="col">
+    <main class="stage fade" id="stage">
+      <figure class="art">
+        <img id="img" alt="" decoding="async">
+        <div class="ph" id="ph" hidden></div>
+      </figure>
+      <article class="text" id="text" tabindex="0"></article>
+    </main>
+
+    <section class="player" id="player">
+      <canvas id="wave" class="wave" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></canvas>
+      <div class="controls">
+        <span class="label" id="label"></span>
+        <div class="buttons">
+          <button type="button" id="prev" class="step" aria-label="Попередня частина">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" id="play" class="play" aria-label="Слухати"></button>
+          <button type="button" id="next" class="step" aria-label="Наступна частина">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <span class="time" id="time"></span>
+      </div>
+    </section>
+
+    <nav class="pager" id="pagerNav" aria-label="Частини"><ol id="pager"></ol></nav>
+  </div>
+
+  <p class="fail" id="fail" hidden></p>
+  <audio id="audio" preload="metadata"></audio>
+</div>
+<noscript><p class="fail">Для перегляду потрібен JavaScript.</p></noscript>
+<script src="js/app.js"></script>
+</body>
+</html>
