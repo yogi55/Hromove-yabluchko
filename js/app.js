@@ -360,8 +360,9 @@
     var step = 5, barW = 2, n = Math.max(1, Math.floor(w / step));
     var P = S.peaks, len = P.length || 1;
     for (var b = 0; b < n; b++) {
-      var from = Math.floor(b / n * len), to = Math.max(from + 1, Math.floor((b + 1) / n * len)), m = 0;
-      for (var q = from; q < to && q < len; q++) if (P[q] > m) m = P[q];
+      var from = Math.floor(b / n * len), to = Math.max(from + 1, Math.floor((b + 1) / n * len)), m = 0, cnt = 0;
+      for (var q = from; q < to && q < len; q++) { m += P[q]; cnt++; }
+      m = cnt ? m / cnt : 0;
       var bh = Math.max(3, m * (h - 4));
       var x = b * step + (step - barW) / 2;
       g.fillStyle = (x / w) <= prog ? played : rest;

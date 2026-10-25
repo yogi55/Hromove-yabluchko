@@ -7,6 +7,7 @@
 Якщо json поруч із mp3 немає, сайт малює тимчасову хвилю, яка не відповідає запису.
 """
 import json
+import math
 import pathlib
 import struct
 import subprocess
@@ -23,12 +24,16 @@ def peaks(path):
     n = len(raw) // 2
     samples = struct.unpack("<%dh" % n, raw[: n * 2])
     bucket = max(1, n // BARS)
-    out = []
+    rms = []
     for i in range(BARS):
         seg = samples[i * bucket:(i + 1) * bucket] or (0,)
-        out.append(max(abs(x) for x in seg))
-    top = max(out) or 1
-    return [round((v / top) ** 0.7, 2) for v in out]
+        rms.append(math.sqrt(sum(x * x for x in seg) / len(seg)))
+    # розтягуємо діапазон: тиша внизу, акценти вгорі, щоб хвиля читалась
+    ordered = sorted(rms)
+    lo = ordered[int(0.05 * (BARS - 1))]
+    hi = ordered[int(0.98 * (BARS - 1))] or 1
+    span = max(hi - lo, 1e-9)
+    return [round(min(1.0, max(0.06, (v - lo) / span)), 2) for v in rms]
 
 
 def main(folders):
