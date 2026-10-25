@@ -2,22 +2,33 @@
   'use strict';
 
   var UI = {
-    ua: { part: 'Частина', play: 'Слухати', pause: 'Пауза', noAudio: 'запису ще немає', lang: 'uk', fail: 'Не вдалося завантажити content.json. Якщо ти відкрив index.html як файл, запусти локальний сервер, наприклад: python3 -m http.server' },
-    en: { part: 'Part', play: 'Listen', pause: 'Pause', noAudio: 'no recording yet', lang: 'en', fail: 'Could not load content.json.' }
+    ua: { part: 'Частина', play: 'Слухати', pause: 'Пауза', noAudio: 'запису ще немає', lang: 'uk',
+          prev: 'Попередня', next: 'Наступна', all: 'Усі історії', of: 'з', close: 'Закрити',
+          reading: 'Режим читання: натисни на ілюстрацію', fail: 'Не вдалося завантажити content.json. Якщо ти відкрив index.html як файл, запусти локальний сервер, наприклад: python3 -m http.server' },
+    en: { part: 'Part', play: 'Listen', pause: 'Pause', noAudio: 'no recording yet', lang: 'en',
+          prev: 'Previous', next: 'Next', all: 'All stories', of: 'of', close: 'Close',
+          reading: 'Reading mode: tap the illustration', fail: 'Could not load content.json.' }
   };
 
   var $ = function (id) { return document.getElementById(id); };
   var el = {
-    title: $('title'), stage: $('stage'), img: $('img'), ph: $('ph'), text: $('text'),
+    title: $('title'), stage: $('stage'), art: $('art'), img: $('img'), ph: $('ph'), text: $('text'),
     wave: $('wave'), label: $('label'), time: $('time'),
     prev: $('prev'), play: $('play'), next: $('next'),
-    pager: $('pager'), pagerNav: $('pagerNav'), lang: $('lang'), fail: $('fail'), audio: $('audio')
+    pager: $('pager'), pagerNav: $('pagerNav'), lang: $('lang'), fail: $('fail'), audio: $('audio'),
+    count: $('count'), rmPrev: $('rmPrev'), rmNext: $('rmNext'),
+    mPrev: $('mPrev'), mNext: $('mNext'), mAll: $('mAll'), mPrevTxt: $('mPrevTxt'), mNextTxt: $('mNextTxt'),
+    mAllCount: $('mAllCount'), mAllTxt: $('mAllTxt'),
+    sheet: $('sheet'), sheetBackdrop: $('sheetBackdrop'), sheetClose: $('sheetClose'), sheetTitle: $('sheetTitle'), sheetList: $('sheetList')
   };
 
-  var S = { data: null, i: 0, lang: 'ua', peaks: [], peaksToken: 0, swapTimer: null, raf: 0, seeking: false, noAudio: false };
+  var S = { data: null, i: 0, lang: 'ua', peaks: [], peaksToken: 0, swapTimer: null, raf: 0, seeking: false, noAudio: false, reading: false };
 
   var ICON_PLAY = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 6.5v11l9-5.5z" fill="currentColor"/></svg>';
   var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8.5 6.5h2.6v11H8.5zM12.9 6.5h2.6v11h-2.6z" fill="currentColor"/></svg>';
+
+  var mq = window.matchMedia ? window.matchMedia('(max-width: 720px)') : { matches: false };
+  function isMobile() { return mq.matches; }
 
   function pad(n) { return n < 10 ? '0' + n : String(n); }
   function fmt(t) { if (!isFinite(t) || t < 0) t = 0; return Math.floor(t / 60) + ':' + pad(Math.floor(t % 60)); }
@@ -42,19 +53,22 @@
     var langs = (data.meta && data.meta.langs) || ['ua'];
     var saved = store('lang');
     S.lang = langs.indexOf(saved) >= 0 ? saved : langs[0];
+    S.reading = store('reading') === '1';
 
     buildPager();
     buildLang(langs);
     bindEvents();
+    applyMode();
 
     var m = /^#(\d+)$/.exec(location.hash);
     var start = m ? Math.min(Math.max(parseInt(m[1], 10), 1), total()) - 1 : 0;
     go(start, { instant: true });
   }
 
-  /* ---------- шкала й мови ---------- */
+  /* ---------- шкала, список і мови ---------- */
   function buildPager() {
     el.pager.innerHTML = '';
+    el.sheetList.innerHTML = '';
     S.data.slides.forEach(function (s, idx) {
       var li = document.createElement('li');
       var b = document.createElement('button');
@@ -64,6 +78,16 @@
       b.setAttribute('aria-label', ui().part + ' ' + s.id);
       li.appendChild(b);
       el.pager.appendChild(li);
+
+      var li2 = document.createElement('li');
+      var b2 = document.createElement('button');
+      b2.type = 'button';
+      b2.setAttribute('data-i', idx);
+      var n = document.createElement('span'); n.className = 'n'; n.textContent = pad(s.id);
+      var t = document.createElement('span'); t.textContent = tr(s.title);
+      b2.appendChild(n); b2.appendChild(t);
+      li2.appendChild(b2);
+      el.sheetList.appendChild(li2);
     });
   }
 
@@ -83,15 +107,57 @@
   function markPager() {
     var btns = el.pager.querySelectorAll('button');
     for (var k = 0; k < btns.length; k++) {
-      var on = k === S.i;
-      if (on) btns[k].setAttribute('aria-current', 'true'); else btns[k].removeAttribute('aria-current');
+      if (k === S.i) btns[k].setAttribute('aria-current', 'true'); else btns[k].removeAttribute('aria-current');
     }
     var cur = btns[S.i];
     if (cur && el.pagerNav.scrollWidth > el.pagerNav.clientWidth) {
       el.pagerNav.scrollLeft = cur.offsetLeft - el.pagerNav.clientWidth / 2 + cur.offsetWidth / 2;
     }
+    var sb = el.sheetList.querySelectorAll('button');
+    for (var q = 0; q < sb.length; q++) {
+      if (q === S.i) sb[q].setAttribute('aria-current', 'true'); else sb[q].removeAttribute('aria-current');
+    }
     var lb = el.lang.querySelectorAll('button');
     for (var j = 0; j < lb.length; j++) lb[j].setAttribute('aria-pressed', String(lb[j].getAttribute('data-lang') === S.lang));
+  }
+
+  /* ---------- режим читання (телефон) ---------- */
+  function applyMode() {
+    var on = isMobile() && S.reading;
+    document.documentElement.classList.toggle('reading', on);
+    if (isMobile()) {
+      el.art.setAttribute('role', 'button');
+      el.art.setAttribute('tabindex', '0');
+      el.art.setAttribute('aria-pressed', String(S.reading));
+      el.art.setAttribute('aria-label', ui().reading);
+    } else {
+      el.art.removeAttribute('role');
+      el.art.removeAttribute('tabindex');
+      el.art.removeAttribute('aria-pressed');
+      el.art.removeAttribute('aria-label');
+    }
+    requestAnimationFrame(function () { drawWave(); updateClip(); });
+  }
+
+  function toggleReading() {
+    if (!isMobile()) return;
+    S.reading = !S.reading;
+    store('reading', S.reading ? '1' : '0');
+    applyMode();
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- список усіх частин ---------- */
+  function openSheet() {
+    el.sheet.hidden = false;
+    var cur = el.sheetList.querySelector('[aria-current="true"]');
+    if (cur) cur.scrollIntoView({ block: 'center' });
+    el.sheetClose.focus();
+  }
+  function closeSheet() {
+    if (el.sheet.hidden) return;
+    el.sheet.hidden = true;
+    try { el.mAll.focus(); } catch (e) {}
   }
 
   /* ---------- показ слайда ---------- */
@@ -103,16 +169,17 @@
     S.i = i;
     clearTimeout(S.swapTimer);
     if (opts.instant || reduceMotion || !changed) {
-      paint(opts);
+      paint(opts, changed);
     } else {
       document.body.classList.add('swap');
-      S.swapTimer = setTimeout(function () { paint(opts); document.body.classList.remove('swap'); }, 180);
+      S.swapTimer = setTimeout(function () { paint(opts, changed); document.body.classList.remove('swap'); }, 180);
     }
   }
 
-  function paint(opts) {
+  function paint(opts, changed) {
     var s = slide();
-    document.documentElement.lang = ui().lang;
+    var u = ui();
+    document.documentElement.lang = u.lang;
     document.title = tr(s.title) ? tr(s.title) + ' · ' + tr(S.data.meta.title) : tr(S.data.meta.title);
     el.title.textContent = tr(s.title);
 
@@ -139,11 +206,25 @@
     var nxt = S.data.slides[S.i + 1];
     if (nxt && nxt.img) { var pre = new Image(); pre.src = nxt.img; }
 
-    el.label.textContent = ui().part + ' ' + pad(s.id) + ' / ' + pad(total());
-    el.prev.disabled = S.i === 0;
-    el.next.disabled = S.i === total() - 1;
+    var num = pad(s.id), tot = pad(total());
+    el.label.textContent = u.part + ' ' + num + ' / ' + tot;
+    el.count.textContent = num + ' / ' + tot;
+    el.mAllCount.textContent = num + ' ' + u.of + ' ' + tot;
+    el.mAllTxt.textContent = u.all;
+    el.mPrevTxt.textContent = u.prev;
+    el.mNextTxt.textContent = u.next;
+    el.sheetTitle.textContent = u.all;
+    el.sheetClose.setAttribute('aria-label', u.close);
+    el.rmPrev.setAttribute('aria-label', u.prev);
+    el.rmNext.setAttribute('aria-label', u.next);
+    if (isMobile()) el.art.setAttribute('aria-label', u.reading);
+
+    var atStart = S.i === 0, atEnd = S.i === total() - 1;
+    el.prev.disabled = el.mPrev.disabled = el.rmPrev.disabled = atStart;
+    el.next.disabled = el.mNext.disabled = el.rmNext.disabled = atEnd;
     markPager();
     try { history.replaceState(null, '', '#' + s.id); } catch (e) {}
+    if (changed && !opts.instant && isMobile() && !S.reading) window.scrollTo(0, 0);
 
     loadAudio(opts && opts.play);
   }
@@ -279,13 +360,36 @@
 
   /* ---------- події ---------- */
   function bindEvents() {
-    el.prev.addEventListener('click', function () { go(S.i - 1); });
-    el.next.addEventListener('click', function () { go(S.i + 1); });
+    function prev() { go(S.i - 1); }
+    function next() { go(S.i + 1); }
+    el.prev.addEventListener('click', prev);
+    el.mPrev.addEventListener('click', prev);
+    el.rmPrev.addEventListener('click', prev);
+    el.next.addEventListener('click', next);
+    el.mNext.addEventListener('click', next);
+    el.rmNext.addEventListener('click', next);
     el.play.addEventListener('click', togglePlay);
 
     el.pager.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (b) go(parseInt(b.getAttribute('data-i'), 10));
+    });
+
+    el.mAll.addEventListener('click', openSheet);
+    el.sheetClose.addEventListener('click', closeSheet);
+    el.sheetBackdrop.addEventListener('click', closeSheet);
+    el.sheetList.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var idx = parseInt(b.getAttribute('data-i'), 10);
+      closeSheet();
+      go(idx);
+    });
+
+    el.art.addEventListener('click', toggleReading);
+    el.art.addEventListener('keydown', function (e) {
+      if (!isMobile()) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleReading(); }
     });
 
     el.lang.addEventListener('click', function (e) {
@@ -299,6 +403,8 @@
 
     el.text.addEventListener('scroll', updateClip);
     window.addEventListener('resize', function () { drawWave(); updateClip(); });
+    if (mq.addEventListener) mq.addEventListener('change', applyMode);
+    else if (mq.addListener) mq.addListener(applyMode);
     window.addEventListener('hashchange', function () {
       var m = /^#(\d+)$/.exec(location.hash);
       if (m) { var idx = parseInt(m[1], 10) - 1; if (idx !== S.i) go(idx); }
@@ -322,9 +428,11 @@
       }
     });
 
-    // клавіатура: стрілки між частинами, пробіл для звуку
+    // клавіатура: стрілки між частинами, пробіл для звуку, Esc закриває список
     document.addEventListener('keydown', function (e) {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'Escape') { closeSheet(); return; }
+      if (!el.sheet.hidden) return;
       if (e.key === 'ArrowLeft') { go(S.i - 1); }
       else if (e.key === 'ArrowRight') { go(S.i + 1); }
       else if (e.key === ' ' || e.code === 'Space') {

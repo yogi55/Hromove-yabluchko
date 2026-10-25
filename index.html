@@ -15,16 +15,25 @@
 <div class="app">
   <header class="top">
     <div class="lang" id="lang" hidden></div>
+    <div class="topbar">
+      <button type="button" id="rmPrev" class="rm rm-prev" aria-label="Попередня частина">
+        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M27 7H1.5M7 1.2L1.2 7 7 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="count" id="count"></span>
+      <button type="button" id="rmNext" class="rm rm-next" aria-label="Наступна частина">
+        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M1 7h25.5M21 1.2L26.8 7 21 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
     <h1 id="title" class="fade"></h1>
   </header>
 
   <div class="col">
-    <main class="stage fade" id="stage">
-      <figure class="art">
+    <main class="stage" id="stage">
+      <figure class="art fade" id="art">
         <img id="img" alt="" decoding="async">
         <div class="ph" id="ph" hidden></div>
       </figure>
-      <article class="text" id="text" tabindex="0"></article>
+      <article class="text fade" id="text" tabindex="0"></article>
     </main>
 
     <section class="player" id="player">
@@ -45,11 +54,42 @@
     </section>
 
     <nav class="pager" id="pagerNav" aria-label="Частини"><ol id="pager"></ol></nav>
+
+    <nav class="mnav" id="mnav" aria-label="Навігація">
+      <button type="button" id="mPrev" class="mn mn-prev">
+        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M27 7H1.5M7 1.2L1.2 7 7 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="mPrevTxt"></span>
+      </button>
+      <button type="button" id="mAll" class="mn mn-all" aria-haspopup="dialog">
+        <span class="mn-top"><span id="mAllCount"></span>
+          <svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.2l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="mn-sub" id="mAllTxt"></span>
+      </button>
+      <button type="button" id="mNext" class="mn mn-next">
+        <svg viewBox="0 0 28 14" width="28" height="14" aria-hidden="true"><path d="M1 7h25.5M21 1.2L26.8 7 21 12.8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="mNextTxt"></span>
+      </button>
+    </nav>
   </div>
 
   <p class="fail" id="fail" hidden></p>
   <audio id="audio" preload="metadata"></audio>
 </div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-head">
+      <h2 id="sheetTitle"></h2>
+      <button type="button" id="sheetClose" class="sheet-close" aria-label="Закрити">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ol class="sheet-list" id="sheetList"></ol>
+  </div>
+</div>
+
 <noscript><p class="fail">Для перегляду потрібен JavaScript.</p></noscript>
 <script src="js/app.js"></script>
 </body>

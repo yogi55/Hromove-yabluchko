@@ -7,6 +7,7 @@
   --rule: #c9c0b2;
   --plate: #1d1b19;
   --focus: #8a3b1f;
+  --veil: rgba(26, 24, 22, .45);
 
   --f-title: "Old Standard TT", "PT Serif", Georgia, serif;
   --f-text: "EB Garamond", Georgia, "Times New Roman", serif;
@@ -56,6 +57,13 @@ h1 {
 }
 .lang button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
 
+/* верхня смужка (лічильник і стрілки) потрібна лише на телефоні */
+.topbar { display: none; }
+.count { font-size: .82rem; letter-spacing: .12em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rm { width: 44px; height: 44px; place-items: center; color: var(--muted); display: none; }
+.rm:hover:not(:disabled) { color: var(--ink); }
+.rm:disabled { opacity: .3; cursor: default; }
+
 /* колонка = ілюстрація + проміжок + текст; плеєр і шкала тягнуться на всю її ширину */
 .col { display: grid; gap: clamp(14px, 2.6vh, 28px); width: fit-content; max-width: 100%; margin-inline: auto; min-width: 0; }
 
@@ -70,7 +78,7 @@ h1 {
   box-shadow: inset 0 0 0 7px var(--plate), inset 0 0 0 8px #4b463f;
 }
 
-/* Текст росте разом з ілюстрацією (близько 3,4% її висоти), колонка вузька: приблизно 18 символів кегля */
+/* Текст росте разом з ілюстрацією (близько 3,4% її висоти), колонка вузька: приблизно 18 розмірів кегля */
 .text {
   font-size: clamp(1.05rem, calc(var(--img-h) * .034), 1.5rem);
   width: 18em;
@@ -133,6 +141,34 @@ h1 {
 .pager button:hover { color: var(--ink); }
 .pager button[aria-current="true"] { color: var(--ink); text-decoration-color: var(--ink); }
 
+/* нижня навігація телефона і список усіх частин */
+.mnav { display: none; }
+.sheet { position: fixed; inset: 0; z-index: 20; }
+.sheet-backdrop { position: absolute; inset: 0; background: var(--veil); }
+.sheet-panel {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  max-height: 78svh; display: flex; flex-direction: column;
+  background: var(--paper); border-top: 1px solid var(--rule);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.sheet-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px));
+}
+.sheet-head h2 { margin: 0; font-family: var(--f-title); font-weight: 400; font-size: 1.1rem; letter-spacing: .12em; text-transform: uppercase; }
+.sheet-close { width: 44px; height: 44px; display: grid; place-items: center; color: var(--muted); }
+.sheet-list {
+  list-style: none; margin: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  padding: 0 max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px));
+}
+.sheet-list li + li { border-top: 1px solid var(--rule); }
+.sheet-list button {
+  width: 100%; display: grid; grid-template-columns: 2.4em minmax(0, 1fr); align-items: baseline; gap: 6px;
+  text-align: left; padding: 13px 0; font-size: 1.1rem;
+}
+.sheet-list .n { font-size: .8rem; letter-spacing: .08em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sheet-list button[aria-current="true"] { text-decoration: underline; text-underline-offset: 4px; }
+
 .fail { text-align: center; color: var(--muted); max-width: 52ch; margin: 24px auto; }
 
 /* плавна зміна слайда */
@@ -140,17 +176,76 @@ h1 {
 .swap .fade { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .fade { transition: none; } }
 
-/* телефон: ілюстрація на всю ширину, текст під нею */
+/* ===== телефон ===== */
 @media (max-width: 720px) {
-  .col { width: 100%; }
-  .stage { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  body { padding-block: 16px 24px; }
+  .app { gap: 18px; }
+  .top, .col, .stage { display: contents; }
+
+  /* порядок: лічильник, заголовок, ілюстрація, плеєр, текст, низ */
+  .lang { position: static; order: 0; align-self: flex-end; }
+  .topbar { order: 1; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; }
+  .count { grid-column: 2; text-align: center; }
+  .rm-prev { grid-column: 1; justify-self: start; }
+  .rm-next { grid-column: 3; justify-self: end; }
+  h1 { order: 2; font-size: clamp(1.6rem, 7.4vw, 2.1rem); }
+  .art { order: 3; cursor: pointer; -webkit-tap-highlight-color: transparent; }
   .art img { width: 100%; height: auto; }
   .ph { width: 100%; height: auto; }
-  .text { width: 100%; max-height: none; overflow: visible; font-size: 1.14rem; padding-right: 0; }
+
+  .player {
+    order: 4;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 14px; row-gap: 8px; align-items: center;
+    padding-bottom: 20px; border-bottom: 1px solid var(--rule);
+  }
+  .controls, .buttons { display: contents; }
+  .play { grid-column: 1; grid-row: 1; width: 52px; height: 52px; }
+  .wave { grid-column: 2; grid-row: 1; height: 44px; }
+  .label { grid-column: 2; grid-row: 2; }
+  .step, .time { display: none; }
+
+  .text {
+    order: 5;
+    width: 100%; max-height: none; overflow: visible;
+    font-size: 1.2rem; line-height: 1.7; padding-right: 0;
+  }
+  .text p { margin: 0 0 1em; }
   .text.is-clipped { -webkit-mask-image: none; mask-image: none; }
-  .controls { grid-template-columns: 1fr auto; row-gap: 6px; }
-  .buttons { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
-  .label { grid-row: 2; }
-  .time { grid-row: 2; }
-  .lang { position: static; justify-content: flex-end; margin-bottom: 6px; }
+  /* на телефоні без буквиці, як у макеті */
+  .text p:first-child::first-letter {
+    -webkit-initial-letter: normal; initial-letter: normal;
+    float: none; font-size: inherit; line-height: inherit; font-weight: inherit; margin: 0;
+  }
+
+  .pager { display: none; }
+  .mnav {
+    order: 6; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 12px;
+    border-top: 1px solid var(--rule); padding-top: 16px;
+  }
+  .mn { display: flex; flex-direction: column; gap: 7px; font-size: .78rem; min-height: 44px; justify-content: flex-end; }
+  .mn-prev { align-items: flex-start; }
+  .mn-next { align-items: flex-end; }
+  .mn-all { align-items: center; gap: 4px; }
+  .mn:disabled { opacity: .35; cursor: default; }
+  .mn-top { display: flex; align-items: center; gap: 5px; font-size: .95rem; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+  .mn-sub { font-size: .72rem; color: var(--muted); }
+
+  /* режим читання: мала ілюстрація, текст із прокруткою, плеєр закріплений унизу */
+  html.reading, html.reading body { height: 100%; overflow: hidden; }
+  .reading .app { height: 100%; gap: 12px; }
+  .reading .rm { display: grid; }
+  .reading .art { order: 2; align-self: center; }
+  .reading .art img { width: auto; height: clamp(150px, 30svh, 320px); }
+  .reading .ph { width: auto; height: clamp(150px, 30svh, 320px); aspect-ratio: 2 / 3; }
+  .reading h1 { order: 3; font-size: clamp(1.4rem, 6.4vw, 1.8rem); }
+  .reading .text {
+    order: 4; flex: 1 1 0; min-height: 0; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: var(--wave) transparent;
+    padding-right: 14px;
+  }
+  .reading .text.is-clipped { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent); }
+  .reading .player { order: 5; flex: none; border-bottom: 0; border-top: 1px solid var(--rule); padding: 14px 0 0; }
+  .reading .play { width: 48px; height: 48px; }
+  .reading .mnav { display: none; }
 }
