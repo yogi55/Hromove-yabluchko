@@ -195,6 +195,8 @@ h1 {
     background: var(--paper); padding-block: 8px;
   }
   .count { grid-column: 2; justify-self: center; min-height: 44px; }
+  .rm { opacity: 1; pointer-events: auto; }
+  .rm:disabled { opacity: .3; }
   .rm-prev { grid-column: 1; justify-self: start; }
   .rm-next { grid-column: 3; justify-self: end; }
   h1 { font-size: clamp(1.6rem, 7.4vw, 2.1rem); padding: 6px 0 20px; }
@@ -228,11 +230,13 @@ h1 {
   }
 
   .player {
-    position: sticky; bottom: env(safe-area-inset-bottom, 0px); z-index: 5;
+    position: sticky; bottom: 0; z-index: 5;
     grid-template-columns: auto minmax(0, 1fr);
     column-gap: 14px; row-gap: 8px; align-items: center;
-    background: var(--paper); border-top: 1px solid var(--rule); padding: 14px 0 12px;
+    background: var(--paper); border-top: 1px solid var(--rule);
+    padding: 14px 0 calc(12px + env(safe-area-inset-bottom, 0px));
   }
+  .player::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 30px; background: linear-gradient(to top, var(--paper), transparent); pointer-events: none; }
   .controls, .buttons { display: contents; }
   .play { grid-column: 1; grid-row: 1; width: 52px; height: 52px; }
   .wave { grid-column: 2; grid-row: 1; height: 44px; }
