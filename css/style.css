@@ -59,7 +59,7 @@ button:disabled { cursor: default; }
   font-family: var(--f-ui); font-size: 12px; line-height: 15px;
   position: relative;
 }
-.part { color: var(--muted); letter-spacing: .04em; }
+.part { color: var(--muted); letter-spacing: .04em; margin-right: auto; }
 .bar-r { display: flex; align-items: center; gap: 48px; }
 .modes { display: flex; gap: 24px; }
 .modes button {
@@ -69,7 +69,7 @@ button:disabled { cursor: default; }
 .toc { color: var(--ink); }
 .toc:hover, .modes button:hover, .back:hover { color: var(--ink); }
 
-.lang { display: flex; gap: 2px; margin-left: 24px; }
+.lang { display: flex; gap: 2px; margin-left: 40px; }
 .lang button { font-size: 11px; letter-spacing: .12em; padding: 4px 6px; color: var(--muted); border-bottom: 1px solid transparent; }
 .lang button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
 

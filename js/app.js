@@ -223,7 +223,7 @@
 
   function loadAudio(autoplay) {
     var s = slide();
-    var src = s.audio && (s.audio[S.lang] || s.audio.ua);
+    var src = s.audio && s.audio[S.lang]; // без запасного варіанта: англійський текст не має грати українську озвучку
     S.noAudio = !src;
     el.play.disabled = S.noAudio;
     setPlayIcon(false);
