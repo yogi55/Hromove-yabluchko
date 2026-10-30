@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": {
-      "ua": "Громове яблучко"
+      "ua": "Громове яблучко",
+      "en": "The Thunder Apple"
     },
     "langs": [
       "ua"
@@ -11,10 +12,12 @@
     {
       "id": 1,
       "title": {
-        "ua": "Громове яблучко"
+        "ua": "Громове яблучко",
+        "en": "The Thunder Apple"
       },
       "text": {
-        "ua": "Все почалось з яблука. Це всі знають. Змій спокусив Єву, та зірвала яблуко і спокусила Адама. Той спокусився, яблуко зів, Бог того не дуже поняв, бо спокушатись було не можна і вигнав їх з Раю. Але взагалі історія не про то…\n\nНіхто вже не згадає коли то було, але багато хто пам’ятає, що в день коли земля зустрілася з небом над Чорногорою, з-за хмар серед блискавок і вітрів виросло Громове дерево, не було на ньому ні плодів ні цвіту лише одне єдине Громове яблучко."
+        "ua": "Все почалось з яблука. Це всі знають. Змій спокусив Єву, та зірвала яблуко і спокусила Адама. Той спокусився, яблуко зів, Бог того не дуже поняв, бо спокушатись було не можна і вигнав їх з Раю. Але взагалі історія не про то…\n\nНіхто вже не згадає коли то було, але багато хто пам’ятає, що в день коли земля зустрілася з небом над Чорногорою, з-за хмар серед блискавок і вітрів виросло Громове дерево, не було на ньому ні плодів ні цвіту лише одне єдине Громове яблучко.",
+        "en": "It all began with an apple. Everyone knows that. The serpent tempted Eve, she plucked the apple and tempted Adam. He gave in and ate the apple. God didn't quite get it, since being tempted was forbidden, and drove them out of Paradise. But really, this story isn't about that…\n\nNobody can remember when it was anymore, but many recall that on the day the earth met the sky above Chornohora, a Thunder Tree grew from behind the clouds, amid lightning and winds. It bore no fruit and no blossom, only one single little Thunder Apple."
       },
       "img": "img/01.jpeg",
       "audio": {
@@ -24,10 +27,12 @@
     {
       "id": 2,
       "title": {
-        "ua": "Релікт"
+        "ua": "Релікт",
+        "en": "Relic"
       },
       "text": {
-        "ua": "Виснажена минулими війнами і конфліктами земля була безлюдна і спустошена. А істоти що населяли Чорногору були лиш тінню тих волелюбних і могутніх велетнів що колись ґаздували тут. Роками вони піднімали очі до захмарного неба, затамувавши важкий подих беззвучно розглядали таємничий плід. Абсолютну тишу завмерлої землі неначе лезом прорізав грім, якого не було тут вже кілька століть. \n\nТаємничо і грізно, неначе алтар в соборі виблискувало Громове яблучко."
+        "ua": "Виснажена минулими війнами і конфліктами земля була безлюдна і спустошена. А істоти що населяли Чорногору були лиш тінню тих волелюбних і могутніх велетнів що колись ґаздували тут. Роками вони піднімали очі до захмарного неба, затамувавши важкий подих беззвучно розглядали таємничий плід. Абсолютну тишу завмерлої землі неначе лезом прорізав грім, якого не було тут вже кілька століть. \n\nТаємничо і грізно, неначе алтар в соборі виблискувало Громове яблучко.",
+        "en": "Worn out by past wars and conflicts, the land lay deserted and ravaged. The creatures who inhabited Chornohora were only a shadow of the freedom-loving, mighty giants who had once been masters here. For years they had raised their eyes to the cloud-wrapped sky and, holding their heavy breath, silently studied the mysterious fruit. The absolute stillness of the frozen land was cut as if by a blade by thunder, which had not been heard here for several centuries.\n\nMysterious and menacing, like an altar in a cathedral, the little Thunder Apple gleamed."
       },
       "img": "img/02.jpeg",
       "audio": {
@@ -37,10 +42,12 @@
     {
       "id": 3,
       "title": {
-        "ua": "Мініатюра"
+        "ua": "Мініатюра",
+        "en": "Miniature"
       },
       "text": {
-        "ua": "Не знаючи ні голоду ні сну, позбавлені слуху, зору і болю істоти, самотні кістяки колишніх місцевих царів століттями і вдень і вночі вгризались в грунт викопуючи нові і нові знаряддя праці колишньої цивілізації. Кожен метр землі був вкритий ямами і копанками біля яких доживали свій іржавий строк лопати, сокири і граблі, мечі і викрутки.\n\nЗдавалось би що не одна армія озброїться тим залізяччам, але нема такої армії, що буде більше за час, що її поглине."
+        "ua": "Не знаючи ні голоду ні сну, позбавлені слуху, зору і болю істоти, самотні кістяки колишніх місцевих царів століттями і вдень і вночі вгризались в грунт викопуючи нові і нові знаряддя праці колишньої цивілізації. Кожен метр землі був вкритий ямами і копанками біля яких доживали свій іржавий строк лопати, сокири і граблі, мечі і викрутки.\n\nЗдавалось би що не одна армія озброїться тим залізяччам, але нема такої армії, що буде більше за час, що її поглине.",
+        "en": "Knowing neither hunger nor sleep, deprived of hearing, sight and pain, the creatures, the lonely skeletons of former local kings, gnawed at the soil day and night for centuries, digging up more and more tools of a vanished civilization. Every meter of earth was covered in pits and burrows, beside which shovels, axes and rakes, swords and screwdrivers lived out their rusting days.\n\nOne might think that more than one army could arm itself with all that scrap iron, but there is no army greater than the time that will swallow it."
       },
       "img": "img/03.jpeg",
       "audio": {
@@ -50,10 +57,12 @@
     {
       "id": 4,
       "title": {
-        "ua": "Кактус"
+        "ua": "Кактус",
+        "en": "Cactus"
       },
       "text": {
-        "ua": "Крижаний дощ суцільним щитом вкрив Чорногору, прошиваючи собою виснажену землю. Землю, що за сторіччя бездощів'я так і не змогла напитися, пожадливо всмоктуючи першу вологу в марній надії загасити той жар, що панував всередині. Мов голки гігантського проклятого кактуса, струмені впивалися в каміння. Льодяні кулі пробивали й застрягали в білосніжних, омитих цим раптовим дощем кістках.\n\nТой, хто не знає ні смерті, ні болю, хто приречений вічно рити суху землю, цього не відчує. Як не відчуває часу, що не має влади над ним. Рік став секундою, а сторіччя — миттю."
+        "ua": "Крижаний дощ суцільним щитом вкрив Чорногору, прошиваючи собою виснажену землю. Землю, що за сторіччя бездощів'я так і не змогла напитися, пожадливо всмоктуючи першу вологу в марній надії загасити той жар, що панував всередині. Мов голки гігантського проклятого кактуса, струмені впивалися в каміння. Льодяні кулі пробивали й застрягали в білосніжних, омитих цим раптовим дощем кістках.\n\nТой, хто не знає ні смерті, ні болю, хто приречений вічно рити суху землю, цього не відчує. Як не відчуває часу, що не має влади над ним. Рік став секундою, а сторіччя — миттю.",
+        "en": "Icy rain covered Chornohora in a solid shield, stitching through the exhausted earth. The earth, which after centuries without rain had never managed to drink its fill, greedily soaked up the first moisture in the vain hope of quenching the fire that reigned inside. Like the spines of a giant cursed cactus, the streams drove into the stones. Balls of ice pierced and lodged in the snow-white bones, washed clean by this sudden rain.\n\nOne who knows neither death nor pain, who is doomed to dig the dry earth forever, will not feel it. Just as he does not feel time, which has no power over him. A year became a second, and a century a moment."
       },
       "img": "img/04.jpeg",
       "audio": {
@@ -63,10 +72,12 @@
     {
       "id": 5,
       "title": {
-        "ua": "Удар"
+        "ua": "Удар",
+        "en": "The Strike"
       },
       "text": {
-        "ua": "І тоді пролунав дзвін Громового яблучка. Важкою хвилею линув крізь ями й гори. Гострий і тонкий, мов лезо, прослизав між ребрами, розпираючи  до тріску грудні клітини зсередини, а з розхитаних щелеп у багнюку вислизали й падали прадавні зуби. Глухі до зовнішнього світу, на секунду всі істоти заціпенівши зупинилися.\n\nГулом відповідала втомлена земля: кожен камінець затремтів, і камертоном загуло іржаве залізяччя. Хмара важкого пилу піднялася над Чорногорою, вмить заховавши її мовчазних мешканців і всю потворність місцини, що колись була оспівана в піснях і віршах, змальована в живописі та описана в міфах і легендах."
+        "ua": "І тоді пролунав дзвін Громового яблучка. Важкою хвилею линув крізь ями й гори. Гострий і тонкий, мов лезо, прослизав між ребрами, розпираючи  до тріску грудні клітини зсередини, а з розхитаних щелеп у багнюку вислизали й падали прадавні зуби. Глухі до зовнішнього світу, на секунду всі істоти заціпенівши зупинилися.\n\nГулом відповідала втомлена земля: кожен камінець затремтів, і камертоном загуло іржаве залізяччя. Хмара важкого пилу піднялася над Чорногорою, вмить заховавши її мовчазних мешканців і всю потворність місцини, що колись була оспівана в піснях і віршах, змальована в живописі та описана в міфах і легендах.",
+        "en": "And then the bell of the Thunder Apple rang out. It rolled like a heavy wave through the pits and the mountains. Sharp and thin as a blade, it slipped between the ribs, swelling the chests from within until they cracked, and from loosened jaws ancient teeth slipped out and fell into the mud. Deaf to the outside world, all the creatures froze for a second, rigid.\n\nThe weary earth answered with a hum: every pebble trembled, and the rusty scrap iron rang like a tuning fork. A cloud of heavy dust rose over Chornohora, instantly hiding its silent inhabitants and all the ugliness of a place that had once been sung in songs and poems, painted in pictures and told of in myths and legends."
       },
       "img": "img/05.jpeg",
       "audio": {
@@ -76,10 +87,12 @@
     {
       "id": 6,
       "title": {
-        "ua": "Огр"
+        "ua": "Огр",
+        "en": "Ogre"
       },
       "text": {
-        "ua": "Коли пил дещо осів, Чорногора постала у своїй справжній, моторошній суті — мов древній, заснулий Огр. Потворний, згорблений Левіафан, знівечений мільйонами глибоких ран. Закам'яніле чудовисько, що колись поглинуло своїх господарів і тепер тиснуло на них своєю важкою, байдужою тушею.\n\nЙого ребрами стирчали гострі скельні виступи, а нутром була отруєна, перерита земля, в якій невтомно продовжували порпатися безликі кістяки."
+        "ua": "Коли пил дещо осів, Чорногора постала у своїй справжній, моторошній суті — мов древній, заснулий Огр. Потворний, згорблений Левіафан, знівечений мільйонами глибоких ран. Закам'яніле чудовисько, що колись поглинуло своїх господарів і тепер тиснуло на них своєю важкою, байдужою тушею.\n\nЙого ребрами стирчали гострі скельні виступи, а нутром була отруєна, перерита земля, в якій невтомно продовжували порпатися безликі кістяки.",
+        "en": "When the dust had settled somewhat, Chornohora appeared in its true, uncanny essence, like an ancient, sleeping Ogre. A hideous, hunched Leviathan, maimed by millions of deep wounds. A petrified monster that had once swallowed its masters and now pressed down on them with its heavy, indifferent carcass.\n\nSharp rocky outcrops stuck out as its ribs, and its innards were poisoned, churned-up earth in which faceless skeletons went on tirelessly rooting."
       },
       "img": "img/06.jpeg",
       "audio": {
@@ -89,10 +102,12 @@
     {
       "id": 7,
       "title": {
-        "ua": "Паніка"
+        "ua": "Паніка",
+        "en": "Panic"
       },
       "text": {
-        "ua": "Дзвін розбудив в істотах чуже, вороже відчуття— первісний, сліпий жах. Фантомна луна прадавньої загрози, що змушувала усе живе шукати порятунку. Без слів і думок, істоти відчули, як простір навколо наповнився вібрацією. Кожна кістка натягнутою струною бриніла в резонансі. \n\nСудомна, мовчазна паніка охопила землю: кістяні пальці гарячково впивалися в сухий, камʼянистий ґрунт, притискалися до холодної землі, намагаючись сховатися від того, від чого сховатися неможливо. Від того чим вони колись були і чим будуть до кінця часів. "
+        "ua": "Дзвін розбудив в істотах чуже, вороже відчуття— первісний, сліпий жах. Фантомна луна прадавньої загрози, що змушувала усе живе шукати порятунку. Без слів і думок, істоти відчули, як простір навколо наповнився вібрацією. Кожна кістка натягнутою струною бриніла в резонансі. \n\nСудомна, мовчазна паніка охопила землю: кістяні пальці гарячково впивалися в сухий, камʼянистий ґрунт, притискалися до холодної землі, намагаючись сховатися від того, від чого сховатися неможливо. Від того чим вони колись були і чим будуть до кінця часів. ",
+        "en": "The bell awoke in the creatures a foreign, hostile feeling: primal, blind terror. The phantom echo of an ancient threat that drove every living thing to seek rescue. Without words or thoughts, the creatures felt the space around them fill with vibration. Every bone hummed in resonance like a taut string.\n\nA convulsive, silent panic seized the land: bony fingers dug feverishly into the dry, stony soil, pressed themselves to the cold earth, trying to hide from that from which there is no hiding. From what they once were and what they will be until the end of time."
       },
       "img": "img/07.jpeg",
       "audio": {
@@ -102,10 +117,12 @@
     {
       "id": 8,
       "title": {
-        "ua": "Сморід"
+        "ua": "Сморід",
+        "en": "Stench"
       },
       "text": {
-        "ua": "Дзвінкий гул заліза вивільнив запечену пам’ять землі. Про часи, коли люди ще мали плоть, а їхня гординя сягнула небес. Тоді ця земля пахла не крижаною чистотою, а нудотним, важким смородом людського тріумфу. Повітря було отруєне чадом розпеченого заліза, мастила й кіптяви гігантських машин, якими вони прагнули загарбати височінь. Перемогти небо, бо підкорили землю.\n\nЦе був душний, їдкий сморід цивілізації, що в своєму нескінченному змаганні отруїла власне дихання ще до того, як упала на коліна і перетворилась на безлику тінь себе в беззмістовному бажанні повернути колишню міць. Сліпо вигрібаючи з пилу і бруду те, що колись давало їй силу."
+        "ua": "Дзвінкий гул заліза вивільнив запечену пам’ять землі. Про часи, коли люди ще мали плоть, а їхня гординя сягнула небес. Тоді ця земля пахла не крижаною чистотою, а нудотним, важким смородом людського тріумфу. Повітря було отруєне чадом розпеченого заліза, мастила й кіптяви гігантських машин, якими вони прагнули загарбати височінь. Перемогти небо, бо підкорили землю.\n\nЦе був душний, їдкий сморід цивілізації, що в своєму нескінченному змаганні отруїла власне дихання ще до того, як упала на коліна і перетворилась на безлику тінь себе в беззмістовному бажанні повернути колишню міць. Сліпо вигрібаючи з пилу і бруду те, що колись давало їй силу.",
+        "en": "The ringing hum of iron released the baked-in memory of the earth. Of times when people still had flesh, and their pride reached the heavens. Back then this land smelled not of icy purity but of the sickening, heavy stench of human triumph. The air was poisoned with the fumes of red-hot iron, grease and the soot of gigantic machines with which they sought to seize the heights. To conquer the sky, because they had subdued the earth.\n\nIt was the stifling, acrid stench of a civilization that in its endless contest poisoned its own breath before it fell to its knees and turned into a faceless shadow of itself, in a meaningless desire to regain its former might. Blindly scraping from the dust and filth whatever once gave it strength."
       },
       "img": "img/08.jpeg",
       "audio": {
@@ -115,10 +132,12 @@
     {
       "id": 9,
       "title": {
-        "ua": "Таран"
+        "ua": "Таран",
+        "en": "Battering Ram"
       },
       "text": {
-        "ua": "Прорізавши повітря, вдарила блискавка, яскраво освітивши гілки монструозного небесного дерева. Громове Яблучко відірвалось від гілки і без жодного звуку глухим тараном врізалось у скам’янілий, сухий ґрунт."
+        "ua": "Прорізавши повітря, вдарила блискавка, яскраво освітивши гілки монструозного небесного дерева. Громове Яблучко відірвалось від гілки і без жодного звуку глухим тараном врізалось у скам’янілий, сухий ґрунт.",
+        "en": "Cutting through the air, a lightning bolt struck, brightly lighting up the branches of the monstrous heavenly tree. The Thunder Apple tore itself from the branch and, without a sound, slammed like a dull battering ram into the petrified, dry soil."
       },
       "img": "img/09.jpeg",
       "audio": {
@@ -128,10 +147,12 @@
     {
       "id": 10,
       "title": {
-        "ua": "Містика"
+        "ua": "Містика",
+        "en": "Mystery"
       },
       "text": {
-        "ua": "Спочатку зникли птахи й риби. Це здалося дивним, але вчені швидко знайшли раціональне пояснення цій містичній аномалії в кліматичних коливаннях, зміні течій та аномальних міграціях. Повітря ставало дедалі важчим, а ранкові хмари — щоразу густішими, поки солодкий присмак заліза в роті не став буденністю. Рідкі промені сонця, що деінде пробивалися крізь цей залізобетонний килим, сліпо билися об фасади фабрик, заводів і височезних веж.\n\nЗа роки безперервних сутінок люди перестали звертати увагу на відсутність світла чи зміну пір доби. Як і піднімати голову догори, щоб побачити, що неба більше немає."
+        "ua": "Спочатку зникли птахи й риби. Це здалося дивним, але вчені швидко знайшли раціональне пояснення цій містичній аномалії в кліматичних коливаннях, зміні течій та аномальних міграціях. Повітря ставало дедалі важчим, а ранкові хмари — щоразу густішими, поки солодкий присмак заліза в роті не став буденністю. Рідкі промені сонця, що деінде пробивалися крізь цей залізобетонний килим, сліпо билися об фасади фабрик, заводів і височезних веж.\n\nЗа роки безперервних сутінок люди перестали звертати увагу на відсутність світла чи зміну пір доби. Як і піднімати голову догори, щоб побачити, що неба більше немає.",
+        "en": "First the birds and fish vanished. It seemed strange, but scientists quickly found a rational explanation for this mystical anomaly in climate fluctuations, shifting currents and anomalous migrations. The air grew heavier and heavier, and the morning clouds ever thicker, until the sweet taste of iron in the mouth became routine. The thin rays of the sun that broke through this reinforced-concrete carpet here and there beat blindly against the facades of factories, plants and towering skyscrapers.\n\nAfter years of unbroken twilight, people stopped noticing the absence of light or the change of the time of day. Just as they stopped raising their heads to see that there was no more sky."
       },
       "img": "img/10.jpeg",
       "audio": {
@@ -141,10 +162,12 @@
     {
       "id": 11,
       "title": {
-        "ua": "Порятунок"
+        "ua": "Порятунок",
+        "en": "Salvation"
       },
       "text": {
-        "ua": "Коли небо остаточно скам’яніло, бити на сполох було пізно. Останні промені сонця зникли, і землю поглинули темрява й паніка. Влада та армія обіцяли порятунок, конструюючи все нове й нове озброєння, що мало пробити кам’яну сферу, яка замкнула планету. \n\nГучні постріли то тут, то там оглушали навколишній світ у марній спробі вигризти бодай одне пасмо світла. Конспірологи віщали, що кисню залишилося на п'ятнадцять років, а еліти потай закачували повітря в підземні сховища, марно сподіваючись пережити замурований світ. Та таке бажане небо виявилося абсолютно нездоланною скелею."
+        "ua": "Коли небо остаточно скам’яніло, бити на сполох було пізно. Останні промені сонця зникли, і землю поглинули темрява й паніка. Влада та армія обіцяли порятунок, конструюючи все нове й нове озброєння, що мало пробити кам’яну сферу, яка замкнула планету. \n\nГучні постріли то тут, то там оглушали навколишній світ у марній спробі вигризти бодай одне пасмо світла. Конспірологи віщали, що кисню залишилося на п'ятнадцять років, а еліти потай закачували повітря в підземні сховища, марно сподіваючись пережити замурований світ. Та таке бажане небо виявилося абсолютно нездоланною скелею.",
+        "en": "When the sky had finally turned to stone, it was too late to sound the alarm. The last rays of the sun vanished, and darkness and panic swallowed the earth. The authorities and the army promised salvation, constructing ever newer weapons meant to pierce the stone sphere that had sealed in the planet.\n\nLoud shots here and there deafened the world around in a futile attempt to gnaw out even one strand of light. Conspiracy theorists proclaimed that only fifteen years of oxygen remained, while the elites secretly pumped air into underground shelters, vainly hoping to survive in a walled-up world. But the much-desired sky turned out to be an absolutely insurmountable rock."
       },
       "img": "img/11.jpeg",
       "audio": {
@@ -154,10 +177,12 @@
     {
       "id": 12,
       "title": {
-        "ua": "Жбурляння"
+        "ua": "Жбурляння",
+        "en": "Hurled"
       },
       "text": {
-        "ua": "Запечатана під суцільним кам’яним куполом, планета перетворилася на замкнену піч. Земля під ногами почала повільно нагріватися, вкриваючись глибокими тріщинами, з яких у чорну пітьму й чад виривалися поодинокі іскри. Вони спалахували й миттєво згасали в розпеченому смороді — кволі, блукаючі вогники у світі, що задихається.\n\nНакопичений тиск і розпечені гази, вириваючись з-під землі, легко жбурляли важку техніку, бетонні блоки, автівки та цілі будинки, наче ті були іграшковІ. Усе довкола заповнив важкий стогін стражденного металу."
+        "ua": "Запечатана під суцільним кам’яним куполом, планета перетворилася на замкнену піч. Земля під ногами почала повільно нагріватися, вкриваючись глибокими тріщинами, з яких у чорну пітьму й чад виривалися поодинокі іскри. Вони спалахували й миттєво згасали в розпеченому смороді — кволі, блукаючі вогники у світі, що задихається.\n\nНакопичений тиск і розпечені гази, вириваючись з-під землі, легко жбурляли важку техніку, бетонні блоки, автівки та цілі будинки, наче ті були іграшкові. Усе довкола заповнив важкий стогін стражденного металу.",
+        "en": "Sealed beneath a solid stone dome, the planet turned into a closed furnace. The ground underfoot began to slowly heat up, covering itself with deep cracks from which single sparks burst into the black darkness and fumes. They flared and instantly died out in the scorching stench: feeble, wandering lights in a suffocating world.\n\nThe accumulated pressure and red-hot gases, breaking out from under the ground, easily hurled heavy machinery, concrete blocks, cars and whole buildings as if they were toys. A heavy groan of suffering metal filled everything around."
       },
       "img": "img/12.jpeg",
       "audio": {
@@ -167,10 +192,12 @@
     {
       "id": 13,
       "title": {
-        "ua": "Кволий"
+        "ua": "Кволий",
+        "en": "Frail"
       },
       "text": {
-        "ua": "Того дня кам’яний моноліт, що колись був небом, здавався ближчим, ніж зазвичай. Важкі темні брили повільно й невблаганно осідали донизу, то тут, то там чіпляючи верхівки споруд. Вони безшумно кришили монолітні стіни, інженерні конструкції та будівельні крани. Уся сталева велич цивілізації виявилася кволою й розсипалася, наче картонна коробка під важелем гігантського преса. \n\nНебо почало падати на землю."
+        "ua": "Того дня кам’яний моноліт, що колись був небом, здавався ближчим, ніж зазвичай. Важкі темні брили повільно й невблаганно осідали донизу, то тут, то там чіпляючи верхівки споруд. Вони безшумно кришили монолітні стіни, інженерні конструкції та будівельні крани. Уся сталева велич цивілізації виявилася кволою й розсипалася, наче картонна коробка під важелем гігантського преса. \n\nНебо почало падати на землю.",
+        "en": "That day the stone monolith that had once been the sky seemed closer than usual. Heavy dark slabs slowly and relentlessly settled downward, catching the tops of buildings here and there. They noiselessly crumbled monolithic walls, engineering structures and construction cranes. All the steel grandeur of civilization turned out to be frail and fell apart like a cardboard box under the lever of a gigantic press.\n\nThe sky began to fall to the earth."
       },
       "img": "img/13.jpeg",
       "audio": {
@@ -180,10 +207,12 @@
     {
       "id": 14,
       "title": {
-        "ua": "Леді"
+        "ua": "Леді",
+        "en": "The Lady"
       },
       "text": {
-        "ua": "Кам’яне небо опускалося повільно й невідворотно чавило землю впродовж цілого десятиліття.Міліметр за міліметром, важкий моноліт осідав донизу, зминаючи залізобетонні підпори, плющачи підземні бункери й перетворюючи інженерні конструкції на розтерту породу. Цілих десять років простір під куполом звужувався, витискаючи кисень і перетворював сховища на замкнені печі.\n\nУ темряві під цим тиском згасав останній порожній погляд Божої Матері, яка простила цей світ, але врятувати його не могла.  Не лишилося нічого. Лише вкритий товщею каменя запечатаний рельєф землі."
+        "ua": "Кам’яне небо опускалося повільно й невідворотно чавило землю впродовж цілого десятиліття.Міліметр за міліметром, важкий моноліт осідав донизу, зминаючи залізобетонні підпори, плющачи підземні бункери й перетворюючи інженерні конструкції на розтерту породу. Цілих десять років простір під куполом звужувався, витискаючи кисень і перетворював сховища на замкнені печі.\n\nУ темряві під цим тиском згасав останній порожній погляд Божої Матері, яка простила цей світ, але врятувати його не могла.  Не лишилося нічого. Лише вкритий товщею каменя запечатаний рельєф землі.",
+        "en": "The stone sky sank slowly and inexorably crushed the earth for an entire decade. Millimeter by millimeter, the heavy monolith settled down, crumpling reinforced-concrete supports, flattening underground bunkers and turning engineering structures into ground rubble. For ten whole years the space under the dome narrowed, squeezing out oxygen and turning shelters into sealed furnaces.\n\nIn the darkness, under this pressure, the last empty gaze of the Mother of God faded, she who had forgiven this world but could not save it. Nothing was left. Only the sealed relief of the earth, covered in a thickness of stone."
       },
       "img": "img/14.jpg",
       "audio": {
@@ -193,10 +222,12 @@
     {
       "id": 15,
       "title": {
-        "ua": "Ура!"
+        "ua": "Ура!",
+        "en": "Hooray!"
       },
       "text": {
-        "ua": "Коли останній небесний камінь торкнувся поверхні, згасаюче сонце на коротку мить розрізало темряву. Промінь осяяв абсолютно порожню площину планети, і одразу після цього в повітря піднялася густа, важка кам’яна пилюка, запечатавши цей світ на сотні й сотні років. \n\nШлях людства не увінчався тріумфом."
+        "ua": "Коли останній небесний камінь торкнувся поверхні, згасаюче сонце на коротку мить розрізало темряву. Промінь осяяв абсолютно порожню площину планети, і одразу після цього в повітря піднялася густа, важка кам’яна пилюка, запечатавши цей світ на сотні й сотні років. \n\nШлях людства не увінчався тріумфом.",
+        "en": "When the last heavenly stone touched the surface, the dying sun for a brief moment cut through the darkness. The ray lit up the absolutely empty plain of the planet, and right after it a thick, heavy stone dust rose into the air, sealing this world for hundreds and hundreds of years.\n\nHumanity's path did not end in triumph."
       },
       "img": "img/15.jpg",
       "audio": {
@@ -206,10 +237,12 @@
     {
       "id": 16,
       "title": {
-        "ua": "Цибатий"
+        "ua": "Цибатий",
+        "en": "Lanky"
       },
       "text": {
-        "ua": "Сотні років по тому над запеченим керамічним монолітом Чорногори висять важкі, нерухомі хмари кам’яного пилу, крізь які звисають поодинокі гілки Громового дерева — цибаті й незграбні. Вони застигли у потворних вигинах, мов шматки небесної арматури. \n\nРудимент прадавнього життя, якому більше немає місця на остиглій планеті: змертвіла деревина давно втратила провідні судини, перетворившись на сухоребрі обвуглені кілки, що, втративши єдиний плід, безглуздо похитуються під безупинним вітром."
+        "ua": "Сотні років по тому над запеченим керамічним монолітом Чорногори висять важкі, нерухомі хмари кам’яного пилу, крізь які звисають поодинокі гілки Громового дерева — цибаті й незграбні. Вони застигли у потворних вигинах, мов шматки небесної арматури. \n\nРудимент прадавнього життя, якому більше немає місця на остиглій планеті: змертвіла деревина давно втратила провідні судини, перетворившись на сухоребрі обвуглені кілки, що, втративши єдиний плід, безглуздо похитуються під безупинним вітром.",
+        "en": "Hundreds of years later, over the baked ceramic monolith of Chornohora hang heavy, motionless clouds of stone dust, through which dangle the lone branches of the Thunder Tree, lanky and clumsy. They have frozen in ugly curves, like pieces of heavenly rebar.\n\nA vestige of ancient life, which has no place any more on the cooled planet: the deadened wood long ago lost its conducting vessels, turning into dry-ribbed, charred stakes that, having lost their only fruit, sway senselessly in the unceasing wind."
       },
       "img": "img/16.jpg",
       "audio": {
@@ -219,10 +252,12 @@
     {
       "id": 17,
       "title": {
-        "ua": "Штуковина"
+        "ua": "Штуковина",
+        "en": "The Thing"
       },
       "text": {
-        "ua": "Під змертвілим небесним деревом, вбившись у гарячий сухий ґрунт, лежало Громове яблуко, ворожо виблискуючи гладким тілом. Неприродний плід — останній так і не зірваний бажаний дар небес. Можливо, єдина надія цього світу на відновлення. \n\nОстанній живий організм на мертвій планеті, яка навіть після загибелі все ще існує за прадавньою інерцією:  добути й володіти."
+        "ua": "Під змертвілим небесним деревом, вбившись у гарячий сухий ґрунт, лежало Громове яблуко, ворожо виблискуючи гладким тілом. Неприродний плід — останній так і не зірваний бажаний дар небес. Можливо, єдина надія цього світу на відновлення. \n\nОстанній живий організм на мертвій планеті, яка навіть після загибелі все ще існує за прадавньою інерцією:  добути й володіти.",
+        "en": "Beneath the deadened heavenly tree, driven into the hot dry soil, lay the Thunder Apple, gleaming hostilely with its smooth body. An unnatural fruit, the last, never-plucked, coveted gift of the heavens. Perhaps the only hope of this world for renewal.\n\nThe last living organism on a dead planet which, even after its death, still exists by an ancient inertia: to obtain and to possess."
       },
       "img": "img/17.jpg",
       "audio": {
@@ -232,10 +267,12 @@
     {
       "id": 18,
       "title": {
-        "ua": "Безкрилий"
+        "ua": "Безкрилий",
+        "en": "Wingless"
       },
       "text": {
-        "ua": "оли життя покинуло землю, а підземні залишки людства остаточно зварилися в духоті й спеці без води і кисню, століттями планета пустувала, мовчазно намотуючи кола навколо сонця. Аж поки одного дня — чи то ночі — не з’явилися фантоми.\n\nПривиди людства: народжені жити, але позбавлені життя. Безтілі, але зв’язані сухим кістяком; засуджені безцільно рухатися за сліпою інерцією минулого. Тинятися остиглим монолітом, слідуючи прадавньому інстинкту: добути й володіти."
+        "ua": "Коли життя покинуло землю, а підземні залишки людства остаточно зварилися в духоті й спеці без води і кисню, століттями планета пустувала, мовчазно намотуючи кола навколо сонця. Аж поки одного дня — чи то ночі — не з’явилися фантоми.\n\nПривиди людства: народжені жити, але позбавлені життя. Безтілі, але зв’язані сухим кістяком; засуджені безцільно рухатися за сліпою інерцією минулого. Тинятися остиглим монолітом, слідуючи прадавньому інстинкту: добути й володіти.",
+        "en": "When life left the earth, and the underground remnants of humanity finally boiled in the stuffiness and heat without water or oxygen, the planet stood empty for centuries, silently winding its circles around the sun. Until one day, or perhaps night, the phantoms appeared.\n\nGhosts of humanity: born to live but deprived of life. Bodiless, yet bound by a dry skeleton; condemned to move aimlessly by the blind inertia of the past. To wander the cooled monolith, following an ancient instinct: to obtain and to possess."
       },
       "img": "img/18.jpg",
       "audio": {
@@ -245,10 +282,12 @@
     {
       "id": 19,
       "title": {
-        "ua": "Розгублений"
+        "ua": "Розгублений",
+        "en": "Bewildered"
       },
       "text": {
-        "ua": "Хмари пилу, які ніс крижаний вітер, збилися з курсу й почали крутитися на місці. Ще довго вони не могли вирішити, куди осідати. Яблуко лежало в землі, що століттями не бачила нічого чужого, не знала, що з ним робити: гріти чи відштовхнути.\n\nНічого не змінилося. Лише десь глибоко під ґрунтом залізо вперше відчуло, що щось не так."
+        "ua": "Хмари пилу, які ніс крижаний вітер, збилися з курсу й почали крутитися на місці. Ще довго вони не могли вирішити, куди осідати. Яблуко лежало в землі, що століттями не бачила нічого чужого, не знала, що з ним робити: гріти чи відштовхнути.\n\nНічого не змінилося. Лише десь глибоко під ґрунтом залізо вперше відчуло, що щось не так.",
+        "en": "The clouds of dust carried by the icy wind lost their course and began to spin in place. For a long time they could not decide where to settle. The apple lay in a land that for centuries had seen nothing foreign, and it did not know what to do with it: warm it or push it away.\n\nNothing changed. Only somewhere deep beneath the soil did the iron feel, for the first time, that something was wrong."
       },
       "img": "img/19.jpg",
       "audio": {
@@ -258,10 +297,12 @@
     {
       "id": 20,
       "title": {
-        "ua": "Відпочинок"
+        "ua": "Відпочинок",
+        "en": "Rest"
       },
       "text": {
-        "ua": "Дерево похмуро звисало з хмар лінивими гілками, наче нагадувало мертвому світу про минулі часи, коли дерев було багато. Тоді в небі світило сонце, і планета лежала під ним, гріючись, розтягнувшись у солодкому сні.\n\nТепер там, де колись були сади й ліси, простягалась гаряча скам'яніла пустеля, і століттями, яких ніхто не рахував, її копали мовчазні кістяки.. Планета навіть не помітила змін."
+        "ua": "Дерево похмуро звисало з хмар лінивими гілками, наче нагадувало мертвому світу про минулі часи, коли дерев було багато. Тоді в небі світило сонце, і планета лежала під ним, гріючись, розтягнувшись у солодкому сні.\n\nТепер там, де колись були сади й ліси, простягалась гаряча скам'яніла пустеля, і століттями, яких ніхто не рахував, її копали мовчазні кістяки.. Планета навіть не помітила змін.",
+        "en": "The tree hung gloomily from the clouds on lazy branches, as if reminding the dead world of past times, when trees were many. Back then the sun shone in the sky, and the planet lay beneath it, basking, stretched out in a sweet sleep.\n\nNow, where there had once been gardens and forests, a hot petrified desert stretched out, and for centuries that no one counted, silent skeletons dug it. The planet did not even notice the changes."
       },
       "img": "img/20.jpg",
       "audio": {
@@ -271,10 +312,12 @@
     {
       "id": 21,
       "title": {
-        "ua": "Герой"
+        "ua": "Герой",
+        "en": "The Hero"
       },
       "text": {
-        "ua": "Світу, спаленому власною пихою, так і не дісталося рятівника. Гординя та прагнення влади вбили героя ще до того, як кам’яне Небо обвалилося на землю, лишивши після себе лише попіл і повну відсутність надії. У цивілізації, побудованій на сліпому бажанні добути й володіти, герой виявився ресурсом.\n\nЙого чесноти, самопожертва й сила були спожиті людством, мов чергова порція палива для згасаючого двигуна. Глядачі лише чекали спасіння як належного, виснажуючи чуже життя власною жадобою."
+        "ua": "Світу, спаленому власною пихою, так і не дісталося рятівника. Гординя та прагнення влади вбили героя ще до того, як кам’яне Небо обвалилося на землю, лишивши після себе лише попіл і повну відсутність надії. У цивілізації, побудованій на сліпому бажанні добути й володіти, герой виявився ресурсом.\n\nЙого чесноти, самопожертва й сила були спожиті людством, мов чергова порція палива для згасаючого двигуна. Глядачі лише чекали спасіння як належного, виснажуючи чуже життя власною жадобою.",
+        "en": "The world, scorched by its own arrogance, never got a savior. Pride and the lust for power killed the hero before the stone Sky collapsed upon the earth, leaving behind only ash and a complete absence of hope. In a civilization built on the blind desire to obtain and to possess, the hero turned out to be a resource.\n\nHis virtues, self-sacrifice and strength were consumed by humanity like yet another portion of fuel for a dying engine. The spectators merely waited for salvation as their due, draining another's life with their own greed."
       },
       "img": "img/21.jpg",
       "audio": {
@@ -284,10 +327,12 @@
     {
       "id": 22,
       "title": {
-        "ua": "Маяк"
+        "ua": "Маяк",
+        "en": "Beacon"
       },
       "text": {
-        "ua": "Блискавка влучила в Громове дерево, і воно зайнялося від коріння до найвищої гілки. Палали хмари пилу, і вогняні вітри пішли Чорногорою, вилизуючи ями й розносячи попіл.\n\nЦе дерево горітиме століттями — колосальний, незгасний смолоскип під запечатаним небом. Монолітний орієнтир у світі, де сам напрямок більше не грає жодної ролі."
+        "ua": "Блискавка влучила в Громове дерево, і воно зайнялося від коріння до найвищої гілки. Палали хмари пилу, і вогняні вітри пішли Чорногорою, вилизуючи ями й розносячи попіл.\n\nЦе дерево горітиме століттями — колосальний, незгасний смолоскип під запечатаним небом. Монолітний орієнтир у світі, де сам напрямок більше не грає жодної ролі.",
+        "en": "Lightning struck the Thunder Tree, and it caught fire from the roots to the highest branch. Clouds of dust burned, and fiery winds swept across Chornohora, licking out the pits and scattering the ash.\n\nThis tree will burn for centuries, a colossal, unquenchable torch beneath the sealed sky. A monolithic landmark in a world where direction itself no longer matters."
       },
       "img": "img/22.jpg",
       "audio": {
@@ -297,10 +342,12 @@
     {
       "id": 23,
       "title": {
-        "ua": "Чепурний"
+        "ua": "Чепурний",
+        "en": "Dapper"
       },
       "text": {
-        "ua": "Усе довкола було перепечене, пористе, покручене, як кераміка з поганої печі. Лише яблуко лежало серед цього попелу ідеально. Гладка, дзеркальна шкірка, симетрична форма, жодної порошинки\n\nВоно виглядало чепурно, як гість у вечірньому костюмі, що помилився дверима й опинився на пожарищі. Вилискувана, непорушна оболонка, всередині якої вже зріла отрута для цілої планети."
+        "ua": "Усе довкола було перепечене, пористе, покручене, як кераміка з поганої печі. Лише яблуко лежало серед цього попелу ідеально. Гладка, дзеркальна шкірка, симетрична форма, жодної порошинки\n\nВоно виглядало чепурно, як гість у вечірньому костюмі, що помилився дверима й опинився на пожарищі. Вилискувана, непорушна оболонка, всередині якої вже зріла отрута для цілої планети.",
+        "en": "Everything around had been over-baked, porous, twisted, like ceramics from a bad kiln. Only the apple lay amid this ash perfectly. Smooth, mirror-like skin, a symmetrical shape, not a speck of dust.\n\nIt looked dapper, like a guest in an evening suit who had mistaken the door and ended up in a burnt-out ruin. A polished, immovable shell, inside which poison for the entire planet was already ripening."
       },
       "img": "img/23.jpeg",
       "audio": {
@@ -310,10 +357,12 @@
     {
       "id": 24,
       "title": {
-        "ua": "Випічка"
+        "ua": "Випічка",
+        "en": "Baking"
       },
       "text": {
-        "ua": "Десятиліття зливалися в століття. Земля повільно пекла яблуко, наче в запечатаній печі. На бездоганному глянці з'явилася перша тьмяна цятка, єдиний слід часу. Та разом із нею над попелом пролився нудотно-солодкий дух. \n\nУ світі, просоченому залізом і їдким чадом, цей запах здавався чужим."
+        "ua": "Десятиліття зливалися в століття. Земля повільно пекла яблуко, наче в запечатаній печі. На бездоганному глянці з'явилася перша тьмяна цятка, єдиний слід часу. Та разом із нею над попелом пролився нудотно-солодкий дух. \n\nУ світі, просоченому залізом і їдким чадом, цей запах здавався чужим.",
+        "en": "Decades merged into centuries. The earth slowly baked the apple, as if in a sealed oven. On the flawless gloss appeared the first dull speck, the only trace of time. And along with it, a sickeningly sweet scent spilled over the ash.\n\nIn a world soaked with iron and acrid fumes, this smell seemed alien."
       },
       "img": "img/24.jpg",
       "audio": {
@@ -323,10 +372,12 @@
     {
       "id": 25,
       "title": {
-        "ua": "Перелом"
+        "ua": "Перелом",
+        "en": "Fracture"
       },
       "text": {
-        "ua": "Спершу тріснуло Яблуко. Тонка риска пішла по дзеркальній шкірці без жодного звуку, наче хтось провів нігтем по склу. З розлому виступила крапля, важка й темна, і впала в попіл. \n\nА високо вгорі, у вогні, обвуглена гілка тріснула й нахилилася, мов стомлена людина, і зависла на кількох волокнах. Крапля за краплею сік пішов у землю, і солодкий дух над попелом став важчим."
+        "ua": "Спершу тріснуло Яблуко. Тонка риска пішла по дзеркальній шкірці без жодного звуку, наче хтось провів нігтем по склу. З розлому виступила крапля, важка й темна, і впала в попіл. \n\nА високо вгорі, у вогні, обвуглена гілка тріснула й нахилилася, мов стомлена людина, і зависла на кількох волокнах. Крапля за краплею сік пішов у землю, і солодкий дух над попелом став важчим.",
+        "en": "First the Apple cracked. A thin line ran across the mirrored skin without a sound, as if someone had drawn a fingernail across glass. From the fissure a drop welled, heavy and dark, and fell into the ash.\n\nAnd high above, in the fire, a charred branch cracked and tilted like a weary person, and hung on a few fibers. Drop by drop the sap went into the earth, and the sweet scent over the ash grew heavier."
       },
       "img": "img/25.jpg",
       "audio": {
@@ -336,10 +387,12 @@
     {
       "id": 26,
       "title": {
-        "ua": "Блискавка"
+        "ua": "Блискавка",
+        "en": "Lightning"
       },
       "text": {
-        "ua": "Минали століття, і сік робив своє. Він ішов ґрунтом тонким швом, повільно розстібаючи землю від краю до краю. З кожним сантиметром у темряві зникало те, що колись вважали вічним.\n\nА високо вгорі так само неквапно розходилося дерево: вогонь розтискав волокна по одному, гілку за гілку, і сипав іскрами в розкриту порожнечу."
+        "ua": "Минали століття, і сік робив своє. Він ішов ґрунтом тонким швом, повільно розстібаючи землю від краю до краю. З кожним сантиметром у темряві зникало те, що колись вважали вічним.\n\nА високо вгорі так само неквапно розходилося дерево: вогонь розтискав волокна по одному, гілку за гілку, і сипав іскрами в розкриту порожнечу.",
+        "en": "Centuries passed, and the sap did its work. It went through the soil in a thin seam, slowly unbuttoning the earth from edge to edge. With every centimeter, what had once been thought eternal vanished in the darkness.\n\nAnd high above, just as unhurriedly, the tree came apart: the fire pried the fibers apart one by one, branch by branch, scattering sparks into the opened void."
       },
       "img": "img/26.jpg",
       "audio": {
@@ -349,10 +402,12 @@
     {
       "id": 27,
       "title": {
-        "ua": "Дурень"
+        "ua": "Дурень",
+        "en": "The Fool"
       },
       "text": {
-        "ua": "Кістяки копали. Згорбившись над сухим ґрунтом, вони гребли голими руками, зариваючись у порожнечу дедалі глибше. Земля бідніла під їхніми пальцями, а покинуті на краях ям лопати й сокири тихо роз'їдала червона іржа. \n\nТупа, зациклена механіка, що стала звичкою фантомної плоті: рити далі."
+        "ua": "Кістяки копали. Згорбившись над сухим ґрунтом, вони гребли голими руками, зариваючись у порожнечу дедалі глибше. Земля бідніла під їхніми пальцями, а покинуті на краях ям лопати й сокири тихо роз'їдала червона іржа. \n\nТупа, зациклена механіка, що стала звичкою фантомної плоті: рити далі.",
+        "en": "The skeletons dug. Hunched over the dry soil, they raked with bare hands, burying themselves ever deeper into the emptiness. The earth grew poorer under their fingers, and the shovels and axes abandoned at the edges of the pits were quietly eaten by red rust.\n\nA dull, stuck mechanism that had become the habit of phantom flesh: dig on."
       },
       "img": "img/27.jpg",
       "audio": {
@@ -362,10 +417,12 @@
     {
       "id": 28,
       "title": {
-        "ua": "Трофей"
+        "ua": "Трофей",
+        "en": "Trophy"
       },
       "text": {
-        "ua": "Колись за один плід вигнали з раю. Тепер він лежав на видноті, без змія, без заборон і без охорони. Бери, хто хоче. Але хотіти було нікому. \n\nТі, хто колись рвався до неба, вже не вкусять. Плід безцільно гнив у скам'янілому ґрунті, лишившись трофеєм і пам'ятником над могилою людства."
+        "ua": "Колись за один плід вигнали з раю. Тепер він лежав на видноті, без змія, без заборон і без охорони. Бери, хто хоче. Але хотіти було нікому. \n\nТі, хто колись рвався до неба, вже не вкусять. Плід безцільно гнив у скам'янілому ґрунті, лишившись трофеєм і пам'ятником над могилою людства.",
+        "en": "Once, for a single fruit, they were driven out of paradise. Now it lay in plain sight, without the serpent, without prohibitions and without a guard. Take it, whoever wants. But there was no one left to want.\n\nThose who once strained toward the sky would no longer take a bite. The fruit rotted aimlessly in the petrified soil, remaining a trophy and a monument over the grave of humanity."
       },
       "img": "img/28.jpg",
       "audio": {
@@ -375,10 +432,12 @@
     {
       "id": 29,
       "title": {
-        "ua": "Бивень"
+        "ua": "Бивень",
+        "en": "Tusk"
       },
       "text": {
-        "ua": "Вогонь точив дерево, поки не звів його до суцільної порожнечі всередині. Розлом розірвав тишу: стовбур завалився з руйнівною вагою, розбризкуючи крону на сухий сажевий шторм. Повітря над згарищем розширилося, втягуючи в себе густий дим, і довго осаджувало його на кілометри довкола.\n\nУ вичищеному, порожньому пейзажі застрягло лише чорне вигнуте вістря, гострий обвуглений бивень, що лишився сам на сам із мовчазною порожнечею. А неподалік, глибоко вдавшись у сухий, запечений ґрунт, безшумно догнивало Громове Яблуко."
+        "ua": "Вогонь точив дерево, поки не звів його до суцільної порожнечі всередині. Розлом розірвав тишу: стовбур завалився з руйнівною вагою, розбризкуючи крону на сухий сажевий шторм. Повітря над згарищем розширилося, втягуючи в себе густий дим, і довго осаджувало його на кілометри довкола.\n\nУ вичищеному, порожньому пейзажі застрягло лише чорне вигнуте вістря, гострий обвуглений бивень, що лишився сам на сам із мовчазною порожнечею. А неподалік, глибоко вдавшись у сухий, запечений ґрунт, безшумно догнивало Громове Яблуко.",
+        "en": "Fire whittled at the tree until it reduced it to a complete emptiness inside. A crack tore through the silence: the trunk collapsed with destructive weight, spraying the crown into a dry storm of soot. The air above the burnt ground expanded, drawing in thick smoke, and went on settling it for kilometers around.\n\nIn the scoured, empty landscape only a black curved point remained stuck, a sharp charred tusk, left alone with the silent emptiness. And not far away, driven deep into the dry, baked soil, the Thunder Apple went on rotting soundlessly."
       },
       "img": "img/29.jpg",
       "audio": {
@@ -388,10 +447,12 @@
     {
       "id": 30,
       "title": {
-        "ua": "Печиво"
+        "ua": "Печиво",
+        "en": "Cookie"
       },
       "text": {
-        "ua": "Час повільно поглинав Яблуко, лишаючи тільки суху кірку. Глянцева оболонка зморщилася й розсипалася на порох, який вітер розметав по згарищу за одну ніч. Проте сік уже зробив своє: він пройшов крізь ґрунт глибше, ніж сягали руки кістяків, і забрав із землі залізо до останньої жилки. Сокири й мечі по краях ям стали лише крихкою іржавою скоринкою, яка розпадалася від найменшого дотику, мов сухе, перепечене печиво.\n\nНе лишилося нічого, що можна добути. Не лишилося нічого, чим можна володіти."
+        "ua": "Час повільно поглинав Яблуко, лишаючи тільки суху кірку. Глянцева оболонка зморщилася й розсипалася на порох, який вітер розметав по згарищу за одну ніч. Проте сік уже зробив своє: він пройшов крізь ґрунт глибше, ніж сягали руки кістяків, і забрав із землі залізо до останньої жилки. Сокири й мечі по краях ям стали лише крихкою іржавою скоринкою, яка розпадалася від найменшого дотику, мов сухе, перепечене печиво.\n\nНе лишилося нічого, що можна добути. Не лишилося нічого, чим можна володіти.",
+        "en": "Time slowly devoured the Apple, leaving only a dry rind. The glossy shell shriveled and crumbled to dust, which the wind scattered across the burnt ground in a single night. Yet the sap had already done its work: it passed through the soil deeper than the skeletons' hands could reach, and drew the iron out of the earth to the last vein. The axes and swords at the edges of the pits became merely a brittle rusty crust, crumbling at the lightest touch, like a dry, over-baked cookie.\n\nNothing was left to obtain. Nothing was left to possess."
       },
       "img": "img/30.jpg",
       "audio": {
