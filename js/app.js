@@ -359,6 +359,12 @@
       if (b) setMode(b.getAttribute('data-mode'), true);
     });
 
+    // якщо файл картинки ще не залитий, показуємо плашку з номером замість зламаної іконки
+    el.img.addEventListener('error', function () {
+      if (!el.img.getAttribute('src')) return;
+      el.img.hidden = true; el.ph.hidden = false;
+    });
+
     el.tocBtn.addEventListener('click', openSheet);
     el.sheetClose.addEventListener('click', closeSheet);
     el.sheetBackdrop.addEventListener('click', closeSheet);
