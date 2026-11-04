@@ -4,11 +4,11 @@
   var UI = {
     ua: { part: 'Частина', listen: 'Слухати', read: 'Читати', toc: 'Зміст', next: 'Далі — частина', back: '← Назад',
           paused: 'На паузі', playing: 'Грає', noAudio: 'Запису ще немає', play: 'Слухати', pause: 'Пауза',
-          all: 'Зміст', close: 'Закрити', lang: 'uk',
+          all: 'Зміст', close: 'Закрити', lang: 'uk', about: 'Про проєкт', soon: 'Текст з’явиться згодом.', copy: '© 2026', name: 'Сагітов Георгій',
           fail: 'Не вдалося завантажити content.json. Якщо ти відкрив index.html як файл, запусти локальний сервер, наприклад: python3 -m http.server' },
     en: { part: 'Part', listen: 'Listen', read: 'Read', toc: 'Contents', next: 'Next — part', back: '← Back',
           paused: 'Paused', playing: 'Playing', noAudio: 'No recording yet', play: 'Play', pause: 'Pause',
-          all: 'Contents', close: 'Close', lang: 'en',
+          all: 'Contents', close: 'Close', lang: 'en', about: 'About', soon: 'Text coming soon.', copy: '© 2026', name: 'Sahitov Heorhii',
           fail: 'Could not load content.json.' }
   };
 
@@ -18,7 +18,8 @@
     title: $('title'), img: $('img'), ph: $('ph'), read: $('read'), body: $('body'), text: $('text'),
     next: $('next'), back: $('back'), cont: $('cont'), thumb: $('thumb'),
     play: $('play'), wave: $('wave'), state: $('state'), time: $('time'), audio: $('audio'), fail: $('fail'),
-    sheet: $('sheet'), sheetBackdrop: $('sheetBackdrop'), sheetClose: $('sheetClose'), sheetTitle: $('sheetTitle'), sheetList: $('sheetList')
+    sheet: $('sheet'), sheetBackdrop: $('sheetBackdrop'), sheetClose: $('sheetClose'), sheetTitle: $('sheetTitle'), sheetList: $('sheetList'),
+    aboutBtn: $('aboutBtn'), aboutBtn2: $('aboutBtn2'), about: $('about'), aboutBackdrop: $('aboutBackdrop'), aboutClose: $('aboutClose'), aboutTitle: $('aboutTitle'), aboutText: $('aboutText'), foot: $('foot'), copyM: $('copyM')
   };
 
   var S = { data: null, i: 0, lang: 'ua', mode: 'read', peaks: [], peaksToken: 0, swapTimer: null, raf: 0, seeking: false, noAudio: false };
@@ -108,10 +109,42 @@
     if (cur) cur.scrollIntoView({ block: 'center' });
     el.sheetClose.focus();
   }
-  function closeSheet() {
+  function closeSheet(quiet) {
     if (el.sheet.hidden) return;
     el.sheet.hidden = true;
-    try { el.tocBtn.focus(); } catch (e) {}
+    if (quiet !== true) { try { el.tocBtn.focus(); } catch (e) {} }
+  }
+
+  var ICON_IG = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>';
+  function fillCopy(node, u) {
+    var url = S.data.meta && S.data.meta.instagram;
+    node.innerHTML = '';
+    node.appendChild(document.createTextNode(u.copy + ' '));
+    if (url) {
+      var a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.className = 'ig';
+      a.setAttribute('aria-label', 'Instagram'); a.innerHTML = ICON_IG;
+      node.appendChild(a); node.appendChild(document.createTextNode(' '));
+    }
+    node.appendChild(document.createTextNode(u.name));
+  }
+
+  function renderAbout() {
+    var u = ui(), raw = tr(S.data.meta && S.data.meta.about).trim();
+    el.aboutText.innerHTML = '';
+    if (!raw) { var p0 = document.createElement('p'); p0.className = 'soon'; p0.textContent = u.soon; el.aboutText.appendChild(p0); return; }
+    raw.split(/\n\s*\n/).forEach(function (t) { var p = document.createElement('p'); p.textContent = t.trim(); el.aboutText.appendChild(p); });
+  }
+  function openAbout() {
+    closeSheet(true);
+    renderAbout();
+    el.about.hidden = false;
+    el.aboutClose.focus();
+  }
+  function closeAbout() {
+    if (el.about.hidden) return;
+    el.about.hidden = true;
+    try { el.aboutBtn.focus(); } catch (e) {}
   }
 
   /* ---------- режим: слухати / читати ---------- */
@@ -190,6 +223,10 @@
     el.tocBtn.textContent = u.toc;
     el.sheetTitle.textContent = u.all;
     el.sheetClose.setAttribute('aria-label', u.close);
+    el.aboutBtn.textContent = u.about; el.aboutBtn2.textContent = u.about;
+    el.aboutTitle.textContent = u.about; el.aboutClose.setAttribute('aria-label', u.close);
+    fillCopy(el.foot, u); fillCopy(el.copyM, u);
+    if (!el.about.hidden) renderAbout();
 
     var atStart = S.i === 0, atEnd = S.i === total() - 1;
     el.next.hidden = atEnd;
@@ -366,6 +403,10 @@
     });
 
     el.tocBtn.addEventListener('click', openSheet);
+    el.aboutBtn.addEventListener('click', openAbout);
+    el.aboutBtn2.addEventListener('click', openAbout);
+    el.aboutClose.addEventListener('click', closeAbout);
+    el.aboutBackdrop.addEventListener('click', closeAbout);
     el.sheetClose.addEventListener('click', closeSheet);
     el.sheetBackdrop.addEventListener('click', closeSheet);
     el.sheetList.addEventListener('click', function (e) {
@@ -414,8 +455,8 @@
     // клавіатура: стрілки між частинами, пробіл для звуку, Esc закриває зміст
     document.addEventListener('keydown', function (e) {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
-      if (e.key === 'Escape') { closeSheet(); return; }
-      if (!el.sheet.hidden) return;
+      if (e.key === 'Escape') { closeSheet(); closeAbout(); return; }
+      if (!el.sheet.hidden || !el.about.hidden) return;
       if (e.key === 'ArrowLeft') { go(S.i - 1); }
       else if (e.key === 'ArrowRight') { go(S.i + 1); }
       else if (e.key === ' ' || e.code === 'Space') {
