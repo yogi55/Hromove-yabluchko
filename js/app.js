@@ -19,7 +19,7 @@
     next: $('next'), back: $('back'), cont: $('cont'), thumb: $('thumb'),
     play: $('play'), wave: $('wave'), state: $('state'), time: $('time'), audio: $('audio'), fail: $('fail'),
     sheet: $('sheet'), sheetBackdrop: $('sheetBackdrop'), sheetClose: $('sheetClose'), sheetTitle: $('sheetTitle'), sheetList: $('sheetList'),
-    aboutBtn: $('aboutBtn'), aboutBtn2: $('aboutBtn2'), about: $('about'), aboutBackdrop: $('aboutBackdrop'), aboutClose: $('aboutClose'), aboutTitle: $('aboutTitle'), aboutText: $('aboutText'), foot: $('foot'), copyM: $('copyM')
+    aboutBtn: $('aboutBtn'), about: $('about'), aboutBackdrop: $('aboutBackdrop'), aboutClose: $('aboutClose'), aboutTitle: $('aboutTitle'), aboutText: $('aboutText'), foot: $('foot'), aboutCopy: $('aboutCopy')
   };
 
   var S = { data: null, i: 0, lang: 'ua', mode: 'read', peaks: [], peaksToken: 0, swapTimer: null, raf: 0, seeking: false, noAudio: false };
@@ -223,9 +223,9 @@
     el.tocBtn.textContent = u.toc;
     el.sheetTitle.textContent = u.all;
     el.sheetClose.setAttribute('aria-label', u.close);
-    el.aboutBtn.textContent = u.about; el.aboutBtn2.textContent = u.about;
+    el.aboutBtn.textContent = u.about;
     el.aboutTitle.textContent = u.about; el.aboutClose.setAttribute('aria-label', u.close);
-    fillCopy(el.foot, u); fillCopy(el.copyM, u);
+    fillCopy(el.foot, u); fillCopy(el.aboutCopy, u);
     if (!el.about.hidden) renderAbout();
 
     var atStart = S.i === 0, atEnd = S.i === total() - 1;
@@ -404,7 +404,6 @@
 
     el.tocBtn.addEventListener('click', openSheet);
     el.aboutBtn.addEventListener('click', openAbout);
-    el.aboutBtn2.addEventListener('click', openAbout);
     el.aboutClose.addEventListener('click', closeAbout);
     el.aboutBackdrop.addEventListener('click', closeAbout);
     el.sheetClose.addEventListener('click', closeSheet);
