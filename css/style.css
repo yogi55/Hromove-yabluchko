@@ -165,7 +165,7 @@ h1 {
 .about { font-family: var(--f-ui); }
 .foot {
   width: min(1220px, calc(100% - 144px)); margin: 0 auto; padding: 0 0 36px;
-  font-family: var(--f-ui); font-size: 11px; line-height: 14px; letter-spacing: .04em; color: var(--muted);
+  font-family: var(--f-ui); font-size: 11px; line-height: 14px; letter-spacing: .04em; color: var(--muted); text-align: center;
 }
 .foot .ig, .sheet-foot .ig { display: inline-block; vertical-align: -2px; margin: 0 2px; color: var(--muted); }
 .foot .ig:hover, .sheet-foot .ig:hover { color: var(--ink); }
